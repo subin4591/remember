@@ -45,6 +45,7 @@ body {
   background-color: var(--back);
 }
 main {
+  min-width: 1240px;
   width: 1240px;
   margin: 0 auto;
 }
