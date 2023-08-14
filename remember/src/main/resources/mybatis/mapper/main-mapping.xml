@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.MainDAO">
+	<!-- Main select -->
+	<!-- 어록 랜덤 조회 -->
+	<select id="randQuotation" parameterType="int" resultType="quotationDto">
+		select * from quotation
+		order by rand() limit #{num};
+	</select>
+	
 	<!-- Test -->
 	<insert id="insertTest" parameterType="quotationDto">
 		insert into quotation(mng_no, name, contents)

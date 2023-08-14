@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,20 @@ public class MainController {
 	@Qualifier("mainService")
 	MainService service;
 	
+	// 메인 화면
+	@RequestMapping("/")
+	public ModelAndView mainPage() {
+		// 배너 어록 랜덤 조회
+		List<QuotationDTO> randQ = service.randQuotation(5);
+		
+		// ModelAndView 생성
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("randQ", randQ);
+		mv.setViewName("main/main");
+		return mv;
+	}
+	
+	// Test
 	@RequestMapping("/main/test")
 	public ModelAndView mainTest() {
 		ModelAndView mv = new ModelAndView();
@@ -24,7 +40,6 @@ public class MainController {
 	
 	@RequestMapping("/main/insertTest")
 	public String mainInsertTest(QuotationDTO dto) {
-		System.out.println(dto);
 		service.insertTest(dto);
 		return "redirect:/main/test";
 	}
