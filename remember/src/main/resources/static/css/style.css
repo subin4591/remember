@@ -1,0 +1,79 @@
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+@font-face {
+    font-family: 'ChosunGs';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+  --back: #D7D1C7;
+  --main: #736248;
+  --point: #F4D29A;
+  --sub1: #BFBAB2;
+  --sub2: #F2ECE1;
+  --gray1: #333333;
+  --gray2: #4f4f4f;
+  --gray3: #828282;
+  --gray4: #bdbdbd;
+  --gray5: #e0e0e0;
+  --white: #ffffff;
+  --heading34: normal bold 34px 'SCoreDream';
+  --heading24: normal bold 24px 'SCoreDream';
+  --heading18: normal bold 18px 'SCoreDream';
+  --body16: normal normal 16px 'SCoreDream';
+  --body14: normal normal 14px 'SCoreDream';
+  --button16: normal bold 16px 'SCoreDream';
+  --button14: normal bold 14px 'SCoreDream';
+  --button12: normal bold 12px 'SCoreDream';
+  --caption14: normal normal 14px 'SCoreDream';
+  --caption12: normal normal 12px 'SCoreDream';
+  --highlight16: normal bold 16px 'SCoreDream';
+  --highlight14: normal bold 14px 'SCoreDream';
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  font-family: 'SCoreDream', sans-serif;
+  color: var(--light-text);
+  background-color: var(--back);
+}
+main {
+  min-width: 1240px;
+  width: 1240px;
+  margin: 0 auto;
+}
+.hanja {
+  font-family: 'ChosunGs', sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ol,
+li,
+ul {
+  list-style: none;
+}
+textarea {
+  resize: none;
+  outline: none;
+}
+input,
+select,
+button {
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  background: none;
+}
+button {
+  background: none;
+  cursor: pointer;
+}
