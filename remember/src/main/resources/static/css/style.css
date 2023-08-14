@@ -9,9 +9,10 @@
 :root {
   --back: #D7D1C7;
   --main: #736248;
-  --point: #F4D29A;
+  --point: #FFA931;
   --sub1: #BFBAB2;
-  --sub2: #F2ECE1;
+  --sub2: #FECB89;
+  --sub3: #E8E2D8;
   --gray1: #333333;
   --gray2: #4f4f4f;
   --gray3: #828282;
@@ -41,7 +42,7 @@ html,
 body {
   width: 100%;
   font-family: 'SCoreDream', sans-serif;
-  color: var(--light-text);
+  color: var(--gray1);
   background-color: var(--back);
 }
 main {
