@@ -1,5 +1,5 @@
 const tabList = document.querySelectorAll('.tabMenu .list li');
-const tableContents = document.querySelectorAll('.tabMenu table');
+const tableContents = document.querySelectorAll('.tabMenu article');
 let activeCont = '';
 
 for (var i = 0; i < tabList.length; i++) {
