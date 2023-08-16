@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DetailDAO">
+	<select id="likeCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM `like`
+		WHERE mng_no=#{mng_no};
+	</select>
+	
+	<insert id="insertLike" parameterType="map">
+		INSERT INTO `like`(mng_no, user_id)
+		VALUES (#{mng_no}, #{id})
+	</insert>
+	
+	<select id="selectComment" parameterType="int" resultType="commentDto">
+		SELECT *
+		FROM `comment`
+		WHERE mng_no=#{mng_no};
+	</select>
+	
+	<insert id="insertComment" parameterType="map">
+		INSERT INTO `comment`(mng_no, user_id, contents)
+		VALUES (#{mng_no}, #{id}, #{contents})
+	</insert>
+</mapper>
