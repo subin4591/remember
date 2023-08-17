@@ -9,6 +9,14 @@
 		order by rand() limit #{num};
 	</select>
 	
+	<!-- 존경해요 순 독립운동가 조회 -->
+	<select id="mainLikeList" parameterType="listDto" resultType="Integer">
+		select mng_no from `like`
+		group by mng_no
+		order by sum(count) desc
+		limit #{start}, #{end}
+	</select>
+	
 	<!-- Test -->
 	<insert id="insertTest" parameterType="quotationDto">
 		insert into quotation(mng_no, name, contents)

@@ -7,5 +7,6 @@
 	<typeAlias type="dto.LikeDTO" alias="likeDto"/>
 	<typeAlias type="dto.QuotationDTO" alias="quotationDto"/>
 	<typeAlias type="dto.UserDTO" alias="userDto"/>
+	<typeAlias type="dto.ListDTO" alias="listDto"/>
 </typeAliases>
 </configuration>

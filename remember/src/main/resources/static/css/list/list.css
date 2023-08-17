@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+/* main */
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+/* listTypeUl */
+#listTypeUl {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border-bottom: 1.5px solid var(--main);
+	width: 100%;
+	margin-top: 20px;
+}
+.listTypeLi {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 20%;
+	height: 50px;
+	border: 1.5px solid var(--main);
+	border-bottom: none;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	cursor: pointer;
+}
+.listTypeLi h1 {
+	font: var(--heading18);
+}
+.activeLi {
+	background-color: var(--main);
+	color: white;
+}
+
+/* listUlCaption */
+#listUlCaption {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin-top: 20px;
+}
+#liCnt span {
+	color: var(--main);
+}
+#listSort a {
+	margin-left: 5px;
+}
+
+/* listUl */
+#listUl {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	width: 100%;
+	margin-top: 20px;
+}
+
+/* listLi */
+.listLi {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 300px;
+	height: 200px;
+	border: 2px solid var(--main);
+	background-color: var(--sub1);
+}
+.liCaption {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin: 10px;
+	font: var(--caption14);
+}
+.liMngNo {
+	margin-left: 10px;
+	color: var(--gray3);
+}
+.liWork {
+	margin-right: 10px;
+	color: var(--main);
+}
+.liContents {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	height: 150px;
+	margin-bottom: 10px;
+}
+.liProfile {
+	width: 50%;
+	height: 100%;
+	border: 1.5px solid var(--main);
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: var(--back);
+	margin-left: 10px;
+}
+.liProfile img {
+	object-fit: cover;
+	object-position: center center;
+	width: 100%;
+	height: 100%;
+}
+.liInfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	height: 100%;
+	margin: 0 10px;
+}
+.liName {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font: var(--heading24);
+	height: 60%;
+}
+.liBottom {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 90%;
+	height: 40%;
+}
+.liBottom * {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.liSex p:first-child,
+.liLike p:first-child,
+.liComm p:first-child {
+	font: var(--highlight14);
+	color: var(--gray2);
+}
+.liSex p:last-child,
+.liLike p:last-child,
+.liComm p:last-child {
+	font: var(--body14);
+	color: var(--gray2);
+}

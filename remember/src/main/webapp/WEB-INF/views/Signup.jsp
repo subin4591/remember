@@ -68,20 +68,7 @@
         />
         </section>
         <div><span id="result-1"></span><span class="time2"></span></div>
-        <section>
-        <input
-          type="text"
-          id="address-1"
-          name="address"
-          readonly
-        />
-        <input
-          type="button"
-          id="address-2"
-          value="주소검색"
-          onclick="return findAddr()"
-        />
-        </section>
+
           <input
             type="password"
             class="secret-number"
@@ -97,8 +84,9 @@
               id="mark"
               name="secret-mark"
               value="mark"
-            /><label class="pw-check">비밀번호표시</label></label
-          >
+            />
+            <label class="pw-check">비밀번호표시</label>
+            </label          >
           <input
             type="password"
             class="secret-number"
@@ -127,4 +115,11 @@
           
           
 </body>
+<script src="/js/sendmail.js"></script>
+<script src="/js/duplicatecheck.js"></script>
+<script src="/js/signupcheck.js"></script>
+<script src="/js/siguploginevent.js"></script>
+<script src="/js/checkbox.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/js/address.js"></script>
 </html>
