@@ -72,58 +72,71 @@
 				<article id="tab2" style="display: none"></article>
 			</div>
 
-			<div class="like" onclick="insertLike()">
+			<div class="like"
+				onclick="${user_id == null ? 'ckeckLogin()' : 'insertLike()'}">
 				👍
 				<p id="likeCount">${likeCount}</p>
 				<p>존경해요</p>
 			</div>
 		</div>
 
+		<div class="bottomTap">
+			<p>감사합니다 💬</p>
+		</div>
 		<div class="commentWrap">
-			<div>
-				<p>감사합니다 💬</p>
-			</div>
-			<form method="post" class="inputWrap">
-				<input
-					type="text"
-					name="contents"
+			<div class="inputWrap">
+				<input type="text" name="addComment" class="commentInput"
+					onkeyup="enterPress(this)"
 					placeholder="${user_id == null ? '로그인 후 입력 가능합니다' : '감사하는 마음을 남겨보세요'}"
-					${user_id == null ? ' disabled' : ''}
-				/>
-				${user_id == null ? '' : '<button>입력</button>'}
-			</form>
+					${user_id == null ? ' disabled' : ''} />
+				<button ${user_id == null ? 'disabled' : ''}
+					onclick="insertComment()">입력</button>
+			</div>
 
 			<c:forEach var="comment" items="${commentList}">
-				<div class="commentWrap">
-					<div class="commentInfo">
-						<p>${comment.name}</p>
-						<c:if test="${user_id eq comment.comment_id}">
-							<button onclick="editComment('${comment.comment_id}')">수정</button>
-							<button onclick="deleteComment('${comment.comment_id}')">삭제</button>
-						</c:if>
-						<p id="date">
-							<fmt:formatDate value="${comment.created_at}"
-								pattern="yyyy-MM-dd a hh:mm" />
-						</p>
+				<div class="commentList">
+					<div class="text" style="display: block;">
+						<div class="commentInfo">
+							<p>${comment.name}</p>
+							<p id="date">
+								<fmt:formatDate value="${comment.created_at}"
+									pattern="yyyy-MM-dd HH:mm" />
+							</p>
+							<c:if test="${user_id eq comment.user_id}">
+								<button id="${comment.comment_id}" onclick="changeInput(this)">수정</button>
+							•
+							<button id="${comment.comment_id}" onclick="deleteComment()">삭제</button>
+							</c:if>
+						</div>
+						<p>${comment.contents}</p>
 					</div>
-					<p>${comment.content}</p>
+					<div class="edit" style="display: none;">
+						<div class="commentInfo">
+							<p>${comment.name}</p>
+							<button id="${comment.comment_id}" onclick="editComment(this)">수정</button>
+							•
+							<button id="${comment.comment_id}" onclick="cancelComment(this)">취소</button>
+						</div>
+						<div class="inputWrap">
+							<input type="text" name="editComment" class="commentInput" value="${comment.contents}" />
+						</div>
+					</div>
 				</div>
 			</c:forEach>
 		</div>
 
+		<div class="bottomTap">
+			<p>정보오류신고</p>
+		</div>
 		<div class="errorWrap">
-			<div>
-				<p>정보오류신고</p>
-			</div>
-			<div>
-				<a
-					href="https://e-gonghun.mpva.go.kr/user/ErrorReportList.do?goTocode=40008">https://e-gonghun.mpva.go.kr/user/ErrorReportList.do?goTocode=40008</a>
-			</div>
+			<a
+				href="https://e-gonghun.mpva.go.kr/user/ErrorReportList.do?goTocode=40008">https://e-gonghun.mpva.go.kr/user/ErrorReportList.do?goTocode=40008</a>
 		</div>
 	</main>
 
 	<script src="/js/detail/detail.js"></script>
 	<script src="/js/detail/tabMenu.js"></script>
 	<script src="/js/detail/insertLike.js"></script>
+	<script src="/js/detail/comment.js"></script>
 </body>
 </html>

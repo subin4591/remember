@@ -4,14 +4,14 @@
 }
 .tabWrap {
   width: 100%;
-  border-bottom: 1.5px solid var(--main);
+  border-bottom: 2px solid var(--main);
 }
 .tabMenu .list {
   display: flex;
   align-items: center;
   justify-content: left;
   position: relative;
-  top: 1.5px;
+  top: 2px;
   left: 0;
 }
 .tabMenu .list li {

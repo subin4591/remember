@@ -25,4 +25,10 @@ public class DetailService {
 	public void insertComment(int mng_no, String id, String contents) {
 		dao.insertComment(mng_no, id, contents);
 	}
+	public void updateComment(String contents, String comment_id) {
+		dao.updateComment(contents, comment_id);
+	}
+	public void deleteComment(String comment_id) {
+		dao.deleteComment(comment_id);
+	}
 }

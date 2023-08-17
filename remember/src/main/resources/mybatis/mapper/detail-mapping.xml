@@ -13,14 +13,27 @@
 		VALUES (#{mng_no}, #{id})
 	</insert>
 	
-	<select id="selectComment" parameterType="int" resultType="commentDto">
-		SELECT *
-		FROM `comment`
-		WHERE mng_no=#{mng_no};
+	<select id="selectComment" parameterType="int" resultType="hashmap">
+		SELECT *, u.name
+		FROM comment c
+		LEFT JOIN user u ON c.user_id = u.user_id
+		WHERE mng_no=#{mng_no}
+		ORDER BY c.created_at DESC, comment_id DESC
+		<!-- LIMIT 10 OFFSET #{page}; -->
 	</select>
 	
 	<insert id="insertComment" parameterType="map">
-		INSERT INTO `comment`(mng_no, user_id, contents)
+		INSERT INTO comment(mng_no, user_id, contents)
 		VALUES (#{mng_no}, #{id}, #{contents})
 	</insert>
+	
+	<update id="updateComment" parameterType="map">
+		UPDATE comment SET contents=#{contents}
+		WHERE comment_id=#{comment_id}
+	</update>
+	
+	<delete id="deleteComment" parameterType="string">
+		DELETE FROM comment
+		WHERE comment_id=#{comment_id}
+	</delete>
 </mapper>

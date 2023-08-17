@@ -44,14 +44,16 @@ main {
 }
 
 .profile .informWrap {
-	width: 100%;
-	display: flex;
+	width: 100%; display : flex;
 	justify-content: space-between;
 	align-items: flex-start;
+	display: flex;
 }
-.profile .informWrap .inform > p:first-of-type {
+
+.profile .informWrap .inform>p:first-of-type {
 	margin-bottom: 15px;
 }
+
 .profile .informWrap .inform .name {
 	margin-bottom: 30px;
 	font: var(--heading24);
@@ -59,45 +61,55 @@ main {
 	justify-content: flex-start;
 	align-items: center;
 }
+
 .profile .informWrap .inform .name span {
 	display: inline-block;
 }
+
 .medal {
-	border: 1.5px solid var(--point); 
-	border-radius: 8px; 
+	border: 1.5px solid var(--point);
+	border-radius: 8px;
 	padding: 4px 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 .medal p {
 	font: var(--body14);
 	padding-top: 2px;
 	margin-left: 8px;
 }
+
 .profile .informWrap .inform .informContent {
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
 }
+
 .profile .informWrap .inform .informContent .left {
 	margin-right: 50px;
 }
-.profile .informWrap .inform .informContent .left p,
-.profile .informWrap .inform .informContent .right p {
+
+.profile .informWrap .inform .informContent .left p, .profile .informWrap .inform .informContent .right p
+	{
 	margin-bottom: 30px;
 }
+
 .profile .informWrap .inform .informContent .left p:last-of-type,
-.profile .informWrap .inform .informContent .right p:last-of-type {
+	.profile .informWrap .inform .informContent .right p:last-of-type {
 	margin-bottom: 0;
 }
+
 .bold {
 	display: inline-block;
 	margin-right: 35px;
 }
+
 .bold, .left p {
 	font: var(--highlight16);
 }
+
 #birthday {
 	display: inline-block;
 	margin-right: 50px;
@@ -113,11 +125,12 @@ main {
 	border: 2px solid var(--point);
 	cursor: pointer;
 }
+
 .profile .informWrap #share:hover {
 	background-color: var(--point);
 }
 
-.like {
+.tabMenu .like {
 	width: 110px;
 	height: 110px;
 	margin: 0 auto;
@@ -129,16 +142,18 @@ main {
 	border-radius: 10px;
 	margin-bottom: 50px;
 	cursor: pointer;
+	font: var(--highlight16);
 }
-.like:active {
+
+.tabMenu .like:active {
 	background-color: var(--point);
 }
 
-.like #likeCount {
+.tabMenu .like #likeCount {
 	margin: 10px 0;
 }
 
-.like p {
+.tabMenu .like p {
 	font: var(--body14);
 }
 
@@ -147,66 +162,95 @@ article {
 	line-height: 30px;
 }
 
-.commentWrap {
-	margin-bottom: 50px;
-}
-.commentWrap > div:first-of-type,
-.errorWrap > div:first-of-type {
-  width: 100%;
-  border-bottom: 1.5px solid var(--main);
-}
-
-.commentWrap > div:first-of-type p,
-.errorWrap > div:first-of-type p {
-  width: 160px;
-  height: 40px;
-  border: 1.5px solid var(--main);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font: var(--highlight14);
-  background-color: var(--main);
-  position: relative;
-  top: 1.5px;
-  left: 0;
-  color: var(--white);
-}
-
 .mokcha {
 	font: var(--heading18);
 	margin-bottom: 5px;
 }
 
-.errorWrap > div:nth-of-type(2) {
+.bottomTap {
+	width: 100%;
+	border-bottom: 2px solid var(--main);
+}
+
+.bottomTap>p {
+	width: 160px;
+	height: 40px;
+	border: 1.5px solid var(--main);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font: var(--highlight14);
+	color: var(--white);
+	background-color: var(--main);
+	position: relative;
+	top: 2px;
+	left: 0;
+}
+
+.commentWrap {
+	margin-bottom: 20px;
+	padding: 30px 20px;
+}
+
+.commentWrap > * {
+	margin-bottom: 30px;
+}
+
+.errorWrap {
 	padding: 30px;
 }
-.errorWrap > div:nth-of-type(2) a {
+
+.errorWrap a {
 	color: blue;
 	text-decoration: underline;
 }
 
-
 .inputWrap {
-	width: calc(100% - 40px);
+	width: 100%;
 	height: 48px;
-	border: 1px solid var(--main);
+	border: 1.5px solid var(--main);
 	border-radius: 8px;
-	margin: 30px 20px;
-	padding: 14px 20px;	
+	padding: 14px 20px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
+
 .inputWrap input {
 	width: 95%;
 	height: 100%;
 }
-.inputWrap input::placeholder {
-	color: var(--white);
+.inputWrap:focus-within {
+	border-color: var(--point);
 }
+.inputWrap input::placeholder,
 .inputWrap button {
 	color: var(--white);
-	
-}	
+}
+
+.commentList {
+	width: 100%;
+	border: 1px solid var(--main);
+	border-radius: 8px;
+	padding: 30px;
+}
+
+.commentList .commentInfo {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 30px;
+}
+
+.commentList .commentInfo p:first-of-type {
+	font: var(--highlight16);
+}
+
+.commentList .commentInfo p {
+	margin-right: 30px;
+}
+
+.commentList .commentInfo button:hover {
+	color: var(--point);
+}
