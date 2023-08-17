@@ -10,7 +10,6 @@
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<link href="/css/style.css" rel=stylesheet>
 	<link href="/css/main/main.css" rel=stylesheet>
-	
 	<script src="/js/jquery-3.6.4.min.js"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
@@ -77,6 +76,19 @@
 				};	// printMonthLi end
 			};	// 독립운동가 리스트 생성자 end
 			
+			// 프로필 사진 없는 경우 함수
+			function noProfile() {
+				$(".profileWrapper img").on("error", function() {
+					let sex = $(this).data("target");
+					if (sex == "여") {
+						$(this).attr("src", "/image/female.svg");
+					}
+					else {
+						$(this).attr("src", "/image/male.svg");
+					}
+				});
+			}	// 프로필 사진 없는 경우 함수 end
+			
 			// 독립운동가 리스트 click event
 			$(document).on("click", ".mainLi", function() {
 				window.location.href = "/detail?mng_no=" + $(this).data("target");
@@ -111,20 +123,44 @@
 								$("#mainMonthUl").append(ml.printLi());
 								
 								// 사진 없으면
-								$(".profileWrapper img").on("error", function() {
-									let sex = $(this).data("target");
-									if (sex == "여") {
-										$(this).attr("src", "/image/female.svg");
-									}
-									else {
-										$(this).attr("src", "/image/male.svg");
-									}
-								});	// 사진 없으면 end
+								noProfile();
 							}	// for end
 						}	// 랜덤 이달의 독립운동가 List success end
 					});	// 랜덤 이달의 독립운동가 List ajax end
 				}	// 이달의 독립운동가 api success end
 			});	// 이달의 독립운동가 api ajax end
+			
+			// 모든 독립유공자 존경해요순 조회 (비동기 -> 동기)
+			async function getLikeList(list) {
+				for (let i = 0; i < list.length; i++) {
+					let mngNo = list[i];
+					
+					try {
+						let data = await $.ajax({
+							url: "https://e-gonghun.mpva.go.kr/opnAPI/publicReportList.do"
+								+ "?nPageIndex=1&nCountPerPage=1&type=JSON"
+								+ "&mngNo=" + mngNo,
+							type: "get",
+							dataType: "json"
+						})	// ajax end
+						
+						// ul에 추가
+						let item = data.ITEMS[0];
+						let ml = new mainList(item.MNG_NO, item.NAME_KO, item.SEX);
+						$("#mainAllUl").append(ml.printLi());
+						
+						// 사진 없으면
+						noProfile();
+					}	// try end
+					catch (error) {
+						console.error(error);
+					}	// catch end
+				}	// for end
+			}	// getLikeList end
+			
+			// 함수 실행
+			getLikeList(${ likeList });
+			
 		});	// document end
 	</script>
 </head>
@@ -164,7 +200,7 @@
 	    			<img src="/image/independence_mark.png">
 		    		<h1>이달의 독립운동가</h1>
 	    		</div>
-	    		<button class="mainListBtn">전체보기</button>
+	    		<button class="mainListBtn" onclick="location.href='/list?type=all'">전체보기</button>
 	    	</div>
 	    	<ul id="mainMonthUl"></ul>
 	    </div>
@@ -174,42 +210,11 @@
 	    	<div class="mainListTop">
 	    		<div class="mainListLeft">
 	    			<img src="/image/independence_mark.png">
-		    		<h1>존경순? 독립운동가</h1>
+		    		<h1>모든 독립유공자</h1>
 	    		</div>
-	    		<button class="mainListBtn">전체보기</button>
+	    		<button class="mainListBtn" onclick="location.href='/list?type=all'">전체보기</button>
 	    	</div>
-	    	<ul id="mainAllUl">
-	    		<li class="mainLi" data-target="3536">
-	    			<div class="profileWrapper">
-	    				<img src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=3536&type=CH">
-	    			</div>
-	    			<h2>유관순</h2>
-			    </li>
-			    <li class="mainLi" data-target="3536">
-	    			<div class="profileWrapper">
-	    				<img src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=3536&type=CH">
-	    			</div>
-	    			<h2>유관순</h2>
-			    </li>
-			    <li class="mainLi" data-target="3536">
-	    			<div class="profileWrapper">
-	    				<img src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=3536&type=CH">
-	    			</div>
-	    			<h2>유관순</h2>
-			    </li>
-			    <li class="mainLi" data-target="3536">
-	    			<div class="profileWrapper">
-	    				<img src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=3536&type=CH">
-	    			</div>
-	    			<h2>유관순</h2>
-			    </li>
-			    <li class="mainLi" data-target="3536">
-	    			<div class="profileWrapper">
-	    				<img src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=3536&type=CH">
-	    			</div>
-	    			<h2>유관순</h2>
-			    </li>
-	    	</ul>
+	    	<ul id="mainAllUl"></ul>
 	    </div>
 	</main>
 	

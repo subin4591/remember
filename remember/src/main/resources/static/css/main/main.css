@@ -170,7 +170,7 @@ main {
 	border-radius: 50%;
 	overflow: hidden;
 	margin-bottom: 10px;
-	background-color: var(--main);
+	background-color: var(--back);
 }
 .profileWrapper img {
 	object-fit: cover;
