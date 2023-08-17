@@ -25,7 +25,7 @@ main {
 	align-items: center;
 }
 
-.profile .profileImg {
+.profile #imgWrap {
 	min-width: 300px;
 	min-height: 380px;
 	width: 300px;
@@ -37,7 +37,7 @@ main {
 	box-shadow: 3px 5px 8px 0px rgba(167, 176, 192, 0.32);
 }
 
-.profile .profileImg img {
+.profile #imgWrap img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
@@ -55,6 +55,25 @@ main {
 .profile .informWrap .inform .name {
 	margin-bottom: 30px;
 	font: var(--heading24);
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.profile .informWrap .inform .name span {
+	display: inline-block;
+}
+.medal {
+	border: 1.5px solid var(--point); 
+	border-radius: 8px; 
+	padding: 4px 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.medal p {
+	font: var(--body14);
+	padding-top: 2px;
+	margin-left: 8px;
 }
 .profile .informWrap .inform .informContent {
 	display: flex;
@@ -97,3 +116,97 @@ main {
 .profile .informWrap #share:hover {
 	background-color: var(--point);
 }
+
+.like {
+	width: 110px;
+	height: 110px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid var(--point);
+	border-radius: 10px;
+	margin-bottom: 50px;
+	cursor: pointer;
+}
+.like:active {
+	background-color: var(--point);
+}
+
+.like #likeCount {
+	margin: 10px 0;
+}
+
+.like p {
+	font: var(--body14);
+}
+
+article {
+	padding: 50px;
+	line-height: 30px;
+}
+
+.commentWrap {
+	margin-bottom: 50px;
+}
+.commentWrap > div:first-of-type,
+.errorWrap > div:first-of-type {
+  width: 100%;
+  border-bottom: 1.5px solid var(--main);
+}
+
+.commentWrap > div:first-of-type p,
+.errorWrap > div:first-of-type p {
+  width: 160px;
+  height: 40px;
+  border: 1.5px solid var(--main);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font: var(--highlight14);
+  background-color: var(--main);
+  position: relative;
+  top: 1.5px;
+  left: 0;
+  color: var(--white);
+}
+
+.mokcha {
+	font: var(--heading18);
+	margin-bottom: 5px;
+}
+
+.errorWrap > div:nth-of-type(2) {
+	padding: 30px;
+}
+.errorWrap > div:nth-of-type(2) a {
+	color: blue;
+	text-decoration: underline;
+}
+
+
+.inputWrap {
+	width: calc(100% - 40px);
+	height: 48px;
+	border: 1px solid var(--main);
+	border-radius: 8px;
+	margin: 30px 20px;
+	padding: 14px 20px;	
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.inputWrap input {
+	width: 95%;
+	height: 100%;
+}
+.inputWrap input::placeholder {
+	color: var(--white);
+}
+.inputWrap button {
+	color: var(--white);
+	
+}	
