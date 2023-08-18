@@ -39,6 +39,9 @@ main {
 	bottom: 100px;
 	width: 100%;
 }
+.bannerText p {
+	text-shadow: 0 0 5px var(--back);
+}
 .bannerText p:nth-child(1) {
 	margin-left: 150px;
 	font: var(--heading24);
@@ -46,7 +49,7 @@ main {
 .bannerText p:nth-child(2) {
 	margin-right: 150px;
 	text-align: right;
-	margin-top: 15px;
+	margin-top: 20px;
 	font: var(--heading18);
 	color: var(--gray2);
 }
@@ -70,6 +73,14 @@ main {
 }
 .swiper-prev {
 	left: 50px;
+}
+.swiper-pagination-bullet {
+	width: 20px;
+	height: 8px;
+	border-radius: 5px; 
+}
+.swiper-pagination-bullet-active {
+	background-color: var(--main);
 }
 
 /* mainSearch */
@@ -157,19 +168,35 @@ main {
 	align-items: center;
 	justify-content: center;
 	width: 220px;
-	height: 280px;
+	height: 300px;
 	background-color: var(--sub1);
 	border: 2px solid var(--main);
 	margin: 0 10px;
 	cursor: pointer;
 }
+.mainLiCaption {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	font: var(--caption14);
+}
+.mainLiCaption p:nth-child(1) {
+	margin-left: 15px;
+	color: var(--gray2);
+}
+.mainLiCaption p:nth-child(2) {
+	margin-right: 15px;
+	color: var(--main);
+}
 .profileWrapper {
-	width: 150px;
+	width: 160px;
 	height: 180px;
-	border: 2px solid var(--main);
-	border-radius: 50%;
+	border: 1.5px solid var(--main);
+	border-radius: 10px;
 	overflow: hidden;
-	margin-bottom: 10px;
+	margin: 15px 0;
 	background-color: var(--back);
 }
 .profileWrapper img {

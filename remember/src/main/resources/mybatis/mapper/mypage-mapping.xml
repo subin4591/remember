@@ -7,4 +7,19 @@
 		SELECT * FROM user WHERE user_id = #{user_id};
 	</select>
 	
+	<update id="userUpdate" parameterType="userDto">
+		UPDATE user SET password=#{password} WHERE user_id = #{user_id};
+	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM user WHERE user_id = #{user_id};
+	</delete>
+	
+	<delete id="deleteLike" parameterType="String">
+		DELETE FROM like WHERE user_id = #{user_id};
+	</delete>
+	
+	<delete id="deleteComment" parameterType="String">
+		DELETE FROM comment WHERE user_id = #{user_id};
+	</delete>	
 </mapper>
