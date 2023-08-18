@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="/css/style.css" rel=stylesheet>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div class="header"></div>
 </body>
 </html>
