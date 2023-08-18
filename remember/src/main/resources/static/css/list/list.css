@@ -11,14 +11,40 @@ a:hover {
 	text-decoration: underline;
 }
 
+/* mainSearch */
+#mainSearchForm {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	height: 50px;
+	border: 2px solid var(--main);
+	border-radius: 8px;
+	margin-top: 80px;
+}
+#mainSearchInput {
+	width: 90%;
+	height: 30px;
+	margin-left: 20px;
+	font: var(--body16);
+	color: var(--main);
+	background-color: var(--back);
+}
+#mainSearchSubmit {
+	cursor: pointer;
+	margin-left: 10px;
+	margin-right: 20px;
+	max-height: 30px;
+}
+
 /* listTypeUl */
 #listTypeUl {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	border-bottom: 1.5px solid var(--main);
+	border-bottom: 2px solid var(--main);
 	width: 100%;
-	margin-top: 20px;
+	margin-top: 80px;
 }
 .listTypeLi {
 	display: flex;
@@ -32,6 +58,10 @@ a:hover {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	cursor: pointer;
+}
+.listTypeLi:hover {
+	box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+	transition: 0.5s;
 }
 .listTypeLi h1 {
 	font: var(--heading18);
@@ -64,7 +94,7 @@ a:hover {
 	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
-	gap: 10px;
+	gap: 20px;
 	width: 100%;
 	margin-top: 20px;
 }
@@ -75,10 +105,11 @@ a:hover {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	width: 300px;
-	height: 200px;
+	width: 280px;
+	height: 180px;
 	border: 2px solid var(--main);
 	background-color: var(--sub1);
+	cursor: pointer;
 }
 .liCaption {
 	display: flex;
@@ -91,7 +122,7 @@ a:hover {
 }
 .liMngNo {
 	margin-left: 10px;
-	color: var(--gray3);
+	color: var(--gray2);
 }
 .liWork {
 	margin-right: 10px;
@@ -102,7 +133,7 @@ a:hover {
 	flex-direction: row;
 	align-items: center;
 	width: 100%;
-	height: 150px;
+	height: 130px;
 	margin-bottom: 10px;
 }
 .liProfile {
@@ -162,4 +193,56 @@ a:hover {
 .liComm p:last-child {
 	font: var(--body14);
 	color: var(--gray2);
+}
+
+/* pageNums */
+.pageNums {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 30px;
+	margin-top: 20px;
+	margin-bottom: 100px; 
+}
+.pageChange, .pageBtn {
+	height: 30px;
+}
+.pageChange {
+	width: 30px;
+	font: var(--button16);
+	color: var(--main);
+	border: 1.5px solid var(--main);
+}
+.pageChange:hover {
+	background-color: var(--main);
+	color: white;
+}
+.strongPrev {
+	border-right: none;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+.prev {
+	margin-right: 10px;
+}
+.strongNext {
+	border-left: none;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.next {
+	margin-left: 10px;
+}
+.pageBtn {
+	margin: 0 5px;
+	font: var(--body16);
+}
+.pageBtn:hover {
+	text-decoration: underline;
+}
+.pageActive {
+	font-weight: bold;
+	color: var(--main);
 }

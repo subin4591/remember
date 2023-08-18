@@ -9,24 +9,72 @@
 	<link href="/css/style.css" rel=stylesheet>
 	<link href="/css/list/list.css" rel=stylesheet>
 	<script src="/js/jquery-3.6.4.min.js"></script>
+	<script src="/js/list/list.js"></script>
 	<script>
 		$(document).ready(function() {
 			// param
 			let type = "${ type }";
-			
-			// type active function
-			function typeActive(type) {
-				$(`.listTypeLi[data-target=\${ type }]`).addClass("activeLi");
+			let whatAPI = "publicReport";
+			if (type == "month") {
+				whatAPI = "indepCrusader";
+				$("#listSort").hide();
 			}
+			
+			// type active
 			typeActive(type);
 			
-			// 독립운동가 리스트 조회
-			let whatAPI = "";
-		});
+			// 독립유공자 리스트 click event
+			$(document).on("click", ".listLi", function() {
+				window.location.href = "/detail?mng_no=" + $(this).data("target");
+			});
+			
+			// 기본 리스트 조회
+			let ncpp = 12;	// nCountPerPage
+			getList(whatAPI, "default", 1, ncpp);
+			
+			// sort event
+			$(".sortA").on("click", function(event) {
+				// 기본 이벤트 해제
+				event.preventDefault();
+				
+				// sort 결과 출력
+				let sort = $(this).data("target");
+				getList(whatAPI, sort, 1, ncpp);
+			});	// sort event end
+			
+			// page event
+			$(document).on("click", ".pageBtn", function(event) {
+				// 기본 이벤트 해제
+				event.preventDefault();
+				
+				// page 결과 출력
+				let sort = $(".sortA.pageActive").data("target");
+				let page = $(this).data("target");
+				getList(whatAPI, sort, page, ncpp);
+			});	// page event end
+			
+			// 검색 submit
+			$("#mainSearchSubmit").on("click", function() {
+				let input = $("#mainSearchInput").val();
+				
+				if (input == "" || input == null) {
+					alert("이름을 입력하시오.");
+				}
+				else {
+					$("#mainSearchForm").submit();
+				}
+			});	// 검색 end
+		});	// document end
 	</script>
 </head>
 <body>
 	<main>
+		<form id="mainSearchForm" action="/search"
+	    	data-aos="fade-up" data-aos-offset="100">
+	    	<input id="mainSearchInput" type="text" name="searchInput" placeholder="이름을 입력하시오.">
+	    	<img id="mainSearchSubmit" src="/image/main/search.png">
+	    </form>
+	    
 		<ul	id="listTypeUl">
 			<li class="listTypeLi" data-target="month" onclick="location.href='/list?type=month'">
 				<h1>이달의 독립운동가</h1>
@@ -37,46 +85,21 @@
 		</ul>
 		
 		<div id="listUlCaption">
-			<p id="liCnt">총 <span>103</span>개</p>
+			<p id="liCnt">총 <span></span>명</p>
 			<div id="listSort">
-				<a href="">기본순</a>
-				<a href="">존경순</a>
-				<a href="">댓글순</a>
+				<a href="" class="sortA" data-target="default">기본순</a>
+				<c:choose>
+					<c:when test="${ type == 'all' }">
+						<a href="" class="sortA" data-target="like">존경순</a>
+						<a href="" class="sortA" data-target="comment">댓글순</a>			
+					</c:when>
+				</c:choose>
 			</div>
 		</div>
 		
-		<ul id="listUl">
-			<li class="listLi">
-				<div class="liCaption">
-					<p class="liMngNo">3536</p>
-					<p class="liWork">3.1운동</p>
-				</div>
-				<div class="liContents">
-					<div class="liProfile">
-						<img src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=3536&type=CH">
-					</div>
-					<div class="liInfo">
-						<div class="liName">
-							<p>유관순</p>
-						</div>
-						<div class="liBottom">
-							<div class="liSex">
-								<p>성별</p>
-								<p>여성</p>
-							</div>
-							<div class="liLike">
-								<p>존경</p>
-								<p>20</p>
-							</div>
-							<div class="liComm">
-								<p>댓글</p>
-								<p>5</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
+		<ul id="listUl"></ul>
+		
+		<div class="pageNums"></div><h1 id="activePage" style="display: none;"></h1>
 	</main>
 </body>
 </html>

@@ -22,7 +22,7 @@
 			const swiper = new Swiper(".swiper-container", {
 				slidesPerView: 1,
 				autoplay: {
-				    delay: 10000,
+				    delay: 8000,
 				    disableOnInteraction: false,
 				},
 				loop: true,
@@ -52,9 +52,10 @@
 			});
 			
 			// 독립운동가 리스트 생성자
-			function mainList(mngNo, name, sex) {
+			function mainList(mngNo, name, sex, work) {
 				this.mngNo = mngNo;
 				this.sex = sex;
+				this.work = work;
 				if (name.length > 6) {
 					this.name = name.substring(0, 6) + "...";
 				}
@@ -64,6 +65,10 @@
 				this.printLi = function() {
 					return `
 						<li class="mainLi" data-target="\${ this.mngNo }">
+							<div class="mainLiCaption">
+								<p>\${ this.mngNo }</p>
+								<p>\${ this.work }</p>
+							</div>
 			    			<div class="profileWrapper">
 			    				<img
 			    					src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=\${ this.mngNo }&type=CH"
@@ -119,7 +124,7 @@
 							for (let i = 0; i < data.ITEM_COUNT; i++) {
 								// ul에 추가
 								let item = data.ITEMS[i];
-								let ml = new mainList(item.MNG_NO, item.NAME_KO, item.SEX);
+								let ml = new mainList(item.MNG_NO, item.NAME_KO, item.SEX, item.WORKOUT_AFFIL);
 								$("#mainMonthUl").append(ml.printLi());
 								
 								// 사진 없으면
@@ -130,37 +135,44 @@
 				}	// 이달의 독립운동가 api success end
 			});	// 이달의 독립운동가 api ajax end
 			
-			// 모든 독립유공자 존경해요순 조회 (비동기 -> 동기)
+			// 모든 독립유공자 존경해요순 조회
 			async function getLikeList(list) {
 				for (let i = 0; i < list.length; i++) {
 					let mngNo = list[i];
 					
-					try {
-						let data = await $.ajax({
-							url: "https://e-gonghun.mpva.go.kr/opnAPI/publicReportList.do"
-								+ "?nPageIndex=1&nCountPerPage=1&type=JSON"
-								+ "&mngNo=" + mngNo,
-							type: "get",
-							dataType: "json"
-						})	// ajax end
-						
-						// ul에 추가
-						let item = data.ITEMS[0];
-						let ml = new mainList(item.MNG_NO, item.NAME_KO, item.SEX);
-						$("#mainAllUl").append(ml.printLi());
-						
-						// 사진 없으면
-						noProfile();
-					}	// try end
-					catch (error) {
-						console.error(error);
-					}	// catch end
+					await $.ajax({
+						url: "https://e-gonghun.mpva.go.kr/opnAPI/publicReportList.do"
+							+ "?nPageIndex=1&nCountPerPage=1&type=JSON"
+							+ "&mngNo=" + mngNo,
+						type: "get",
+						dataType: "json",
+						success: function(data) {
+							// ul에 추가
+							let item = data.ITEMS[0];
+							let ml = new mainList(item.MNG_NO, item.NAME_KO, item.SEX, item.WORKOUT_AFFIL);
+							$("#mainAllUl").append(ml.printLi());
+							
+							// 사진 없으면
+							noProfile();
+						}	// success end
+					});	// ajax end
 				}	// for end
 			}	// getLikeList end
 			
 			// 함수 실행
 			getLikeList(${ likeList });
 			
+			// 검색 submit
+			$("#mainSearchSubmit").on("click", function() {
+				let input = $("#mainSearchInput").val();
+				
+				if (input == "" || input == null) {
+					alert("이름을 입력하시오.");
+				}
+				else {
+					$("#mainSearchForm").submit();
+				}
+			});	// 검색 end
 		});	// document end
 	</script>
 </head>
@@ -187,20 +199,20 @@
 	        <div class="swiper-pagination"></div>
 	    </div>
 	    
-	    <form id="mainSearchForm"
-	    	data-aos="fade-up" data-aos-offset="300">
-	    	<input id="mainSearchInput" type="text" name="searchVal" placeholder="이름을 입력하시오.">
+	    <form id="mainSearchForm" action="/search"
+	    	data-aos="fade-up" data-aos-offset="100">
+	    	<input id="mainSearchInput" type="text" name="searchInput" placeholder="이름을 입력하시오.">
 	    	<img id="mainSearchSubmit" src="/image/main/search.png">
 	    </form>
 	    
 	    <div id="mainMonthList" class="mainList"
-	    	data-aos="fade-up" data-aos-offset="300">
+	    	data-aos="fade-up" data-aos-offset="200">
 	    	<div class="mainListTop">
 	    		<div class="mainListLeft">
 	    			<img src="/image/independence_mark.png">
 		    		<h1>이달의 독립운동가</h1>
 	    		</div>
-	    		<button class="mainListBtn" onclick="location.href='/list?type=all'">전체보기</button>
+	    		<button class="mainListBtn" onclick="location.href='/list?type=month'">전체보기</button>
 	    	</div>
 	    	<ul id="mainMonthUl"></ul>
 	    </div>
