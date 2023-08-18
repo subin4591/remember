@@ -3,4 +3,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.ListDAO">
 	<!-- List select -->
+	<!-- 각 독립유공자 별 존경해요, 댓글 개수 (default) -->
+	<select id="listLikeComment" parameterType="listDto" resultType="listDto">
+		select c.mng_no as mng_no, count(c.contents) as `comment`, sum(l.count) as `like`
+		from `comment` as c 
+		left join `like` as l
+		on c.mng_no = l.mng_no where
+		(<foreach collection="mngNoList" item="mng" separator=" or ">c.mng_no = #{mng}</foreach>)
+		group by mng_no
+	</select>
+	
+	<!-- 각 독립유공자 별 존경해요, 댓글 개수 (sort) -->
+	<select id="listSort" parameterType="listDto" resultType="listDto">
+		select c.mng_no as mng_no, count(c.contents) as `comment`, sum(l.count) as `like`
+		from `comment` as c 
+		left join `like` as l
+		on c.mng_no = l.mng_no
+		group by mng_no
+		order by `${sort}` is null, `${sort}` desc, mng_no
+		limit #{start}, #{end}
+	</select>
+	<select id="listSortCount" resultType="int">
+		select count(*)
+		from (
+			select c.mng_no
+		    from `comment` as c
+		    left join `like` as l
+		    on c.mng_no = l.mng_no
+		    group by c.mng_no
+		) as subquery;
+	</select>
 </mapper>
