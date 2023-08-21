@@ -69,6 +69,10 @@
 	</script>
 </head>
 <body>
+	<!-- header -->
+	<%@ include file="../header.jsp" %>
+	
+	<!-- main -->
 	<main>
 		<form id="mainSearchForm" action="/search"
 	    	data-aos="fade-up" data-aos-offset="100">
@@ -102,5 +106,8 @@
 		
 		<div class="pageNums"></div><h1 id="activePage" style="display: none;"></h1>
 	</main>
+	
+	<!-- footer -->
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>

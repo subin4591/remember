@@ -15,6 +15,8 @@
 	<script src="/js/main/declaration.js"></script>
 </head>
 <body>
+	<!-- header -->
+	<%@ include file="../header.jsp" %>
 	
 	<!-- main -->
 	<main>
@@ -235,5 +237,7 @@
 		</div>
 	</main>
 	
+	<!-- footer -->
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>

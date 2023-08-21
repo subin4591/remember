@@ -123,6 +123,10 @@
 	</script>
 </head>
 <body>
+	<!-- header -->
+	<%@ include file="../header.jsp" %>
+	
+	<!-- main -->
 	<main>
 		<form id="mainSearchForm" action="/search"
 	    	data-aos="fade-up" data-aos-offset="100">
@@ -152,5 +156,8 @@
 			<h1>검색 결과가 없습니다.</h1>
 		</div>
 	</main>
+	
+	<!-- footer -->
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>
