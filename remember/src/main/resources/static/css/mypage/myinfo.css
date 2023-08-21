@@ -1,0 +1,261 @@
+@charset "UTF-8";
+
+.my_wrap {
+	display: flex;
+	flex-direction: column;
+	width: 1000px;
+	min-width: 1000px;
+	background-color: var(--sub3);
+	padding: 75px;
+	border-radius: 1rem;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+	margin: 10px auto;
+}
+
+.my_title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30px;
+	font: var(--heading24);
+}
+
+.my_content {
+	width : 100%;
+	border : 3px solid var(--main);
+	border-radius : 20px;
+}
+
+.top {
+	display: flex;
+	justify-content: space-around;
+	border-bottom: 1px solid var(--main);
+	padding: 15px 0;
+	font : var(--highlight16);
+}
+/*회원 정보 & 회원 정보 수정*/
+.myinfo {
+	width: 400px;
+	font-size: 15px;
+	margin: 50px auto;/*위 우 아래 좌*/
+}
+
+.bt_wrap{
+	display : flex;
+	gap: 10px;
+	justify-content: center;
+	margin: 40px auto;
+	width: 400px;
+}
+
+#editUser {
+	font : var(--button14);
+	background-color: var(--main);
+	border: 1px solid var(--main);
+	border-radius: 8px;
+	color: white;
+	padding: 10px 40px;
+	width:200px;
+	box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+#editUser:hover {
+	background-color: var(--sub3);
+	border: 1px solid var(--main);
+	color: var(--main);
+}
+
+#deleteUser {
+	font : var(--button14);
+	background-color: var(--sub3);
+	border: 1px solid var(--main);
+	border-radius: 8px;
+	padding: 10px 40px;
+	width:200px;
+	box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.1);
+	color: var(--main);
+}
+
+#deleteUser:hover {
+	background-color: var(--gray1);
+	border: 1px solid var(--gray1);
+	color: white;
+}
+
+.myedit {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 400px;
+	margin: 10px auto;
+	padding: 10px 0;
+	font-size: 15px;
+}
+
+.myedit>p {
+	flex : 3;
+}
+
+.myedit input {
+	border: 1px solid var(--main);
+	border-radius: 8px;
+	height: 30px;
+	padding: 5px 10px;
+	flex : 7;
+}
+
+input:focus {
+	border: 2px solid var(--point);
+	outline: 0;
+}
+
+input:disabled {
+    background: var(--back);
+    font : var(--body14);
+}
+
+.help {
+    font-size: 14px;
+    color: var(--gray3);
+    background: url(/image/icon_table_help.svg) no-repeat 0 3px;
+    padding-left: 20px;
+    margin : 0 auto;
+}
+
+#editBtn {
+	font : var(--button14);
+	background-color: var(--main);
+	border: 1px solid var(--main);
+	border-radius: 8px;
+	color: white;
+	padding: 10px 40px;
+	width : 400px;
+	margin-top:15px;
+	box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+#editBtn:hover {
+	background-color: var(--sub3);
+	border: 1px solid var(--main);
+	color: var(--main);
+}
+
+/*존경해요*/
+.mylist {
+	margin: 30px auto;/*위 우 아래 좌*/
+}
+
+/* mainMonthUl */
+#mainMonthUl, #mainAllUl {
+	display: flex;
+	gap : 8px;
+	align-items: center;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+/* mainLi */
+.mainLi {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 300px;
+	background-color: var(--sub1);
+	border: 2px solid var(--main);
+	margin: 10px 10px;
+	cursor: pointer;
+	flex: 0 0 calc(33.33% - 25.5px);
+}
+.mainLiCaption {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	font: var(--caption14);
+}
+.mainLiCaption p:nth-child(1) {
+	margin-left: 15px;
+	color: var(--gray2);
+}
+.mainLiCaption p:nth-child(2) {
+	margin-right: 15px;
+	color: var(--main);
+}
+.profileWrapper {
+	width: 160px;
+	height: 180px;
+	border: 1.5px solid var(--main);
+	border-radius: 10px;
+	overflow: hidden;
+	margin: 15px 0;
+	background-color: var(--back);
+}
+.profileWrapper img {
+	object-fit: cover;
+	object-position: center center;
+	width: 100%;
+	height: 100%;
+}
+
+/*작성 댓글*/
+.mycomment {
+    width: 100%;
+	margin: 30px auto;
+    text-decoration: none;
+}
+
+.mycomment > div {
+    border-bottom: 1px solid #ddd;
+}
+
+.mycomment > div.top {
+    border-bottom: 1px solid #999;
+}
+
+.mycomment > div:last-child {
+    border-bottom: 1px solid #999;
+}
+
+.mycomment .top {
+    display: flex;
+	padding: 15px 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.mycomment .num {
+    flex : 1;
+    text-align: center;
+}
+
+.mycomment .title {
+    flex : 7;
+    text-align: left;
+    white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.mycomment .top .title {
+    text-align: center;
+}
+
+.mycomment .date {
+    flex : 2;
+    text-align: center;
+}
+
+.mycomment p {
+	text-align:center;
+	padding: 15px 0;
+}
+
+.mycommentlist {
+	display: flex;
+	padding: 15px 0;
+    font-size: 12px;
+    text-align: center;
+}

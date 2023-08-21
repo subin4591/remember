@@ -1,8 +1,12 @@
 package dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import dto.CommentDTO;
+import dto.LikeDTO;
 import dto.UserDTO;
 
 @Repository
@@ -18,5 +22,8 @@ public interface MypageDAO {
 
 	public int deleteComment(UserDTO dto);
 	
+	public List<LikeDTO> getLike(String user_id);
+	
+	public List<CommentDTO> getComment(String user_id);
 	
 }

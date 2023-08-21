@@ -21,5 +21,14 @@
 	
 	<delete id="deleteComment" parameterType="String">
 		DELETE FROM comment WHERE user_id = #{user_id};
-	</delete>	
+	</delete>
+	
+	<select id="getLike" parameterType="String" resultType="likeDto">
+		SELECT * FROM `like` WHERE user_id = #{user_id};
+	</select>
+	
+	<select id="getComment" parameterType="String" resultType="commentDto">
+		SELECT * FROM comment WHERE user_id = #{user_id};
+	</select>
+	
 </mapper>
