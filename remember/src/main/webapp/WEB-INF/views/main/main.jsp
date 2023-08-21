@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>기억하길</title>
+	<link href="/image/icon.png" rel="icon">
 	<link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<link href="/css/style.css" rel=stylesheet>
@@ -71,6 +72,7 @@
 							</div>
 			    			<div class="profileWrapper">
 			    				<img
+			    					class="yesProfile"
 			    					src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=\${ this.mngNo }&type=CH"
 			    					data-target="\${ this.sex }"
 			    				>
@@ -83,7 +85,7 @@
 			
 			// 프로필 사진 없는 경우 함수
 			function noProfile() {
-				$(".profileWrapper img").on("error", function() {
+				$(".yesProfile").on("error", function() {
 					let sex = $(this).data("target");
 					if (sex == "여") {
 						$(this).attr("src", "/image/female.svg");
@@ -91,6 +93,7 @@
 					else {
 						$(this).attr("src", "/image/male.svg");
 					}
+					$(this).attr("class", "noProfile")
 				});
 			}	// 프로필 사진 없는 경우 함수 end
 			

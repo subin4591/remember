@@ -24,6 +24,7 @@ function indeList(mngNo, name, sex, work) {
 				<div class="liContents">
 					<div class="liProfile">
 						<img
+							class="yesProfile"
 							src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=${ this.mngNo }&type=CH"
 							data-target="${ this.sex }"
 						>
@@ -61,7 +62,7 @@ function likeComment(mngNo, like, comment) {
 
 // 프로필 사진 없는 경우 함수
 function noProfile() {
-	$(".liProfile img").on("error", function() {
+	$(".yesProfile").on("error", function() {
 		let sex = $(this).data("target");
 		if (sex == "여") {
 			$(this).attr("src", "/image/female.svg");
@@ -69,6 +70,7 @@ function noProfile() {
 		else {
 			$(this).attr("src", "/image/male.svg");
 		}
+		$(this).attr("class", "noProfile");
 	});
 };	// 프로필 사진 없는 경우 함수 end
 
@@ -269,6 +271,7 @@ function getList(whatAPI, sort, page, ncpp) {
 				$(".pageNums").html(makePage(totalCnt, ncpp, page));
 				pageActive(sort, page);
 				
+				// 리스트 출력
 				getListFor(data.list);
 			}	// success end
 		});	// ajax end

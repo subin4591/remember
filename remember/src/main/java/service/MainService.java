@@ -24,9 +24,4 @@ public class MainService {
 	public List<Integer> mainLikeList(ListDTO dto) {
 		return dao.mainLikeList(dto);
 	}
-	
-	// Test
-	public void insertTest(QuotationDTO dto) {
-		dao.insertTest(dto);
-	}
 }

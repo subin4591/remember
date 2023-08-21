@@ -17,7 +17,4 @@ public interface MainDAO {
 	
 	// 존경해요 순 독립운동가 조회
 	public List<Integer> mainLikeList(ListDTO dto);
-	
-	// Test
-	public void insertTest(QuotationDTO dto);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,17 +38,9 @@ public class MainController {
 		return mv;
 	}
 	
-	// Test
-	@RequestMapping("/main/test")
-	public ModelAndView mainTest() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main/main_test");
-		return mv;
-	}
-	
-	@RequestMapping("/main/insertTest")
-	public String mainInsertTest(QuotationDTO dto) {
-		service.insertTest(dto);
-		return "redirect:/main/test";
+	// 독립선언서
+	@RequestMapping("/declaration/{day}")
+	public String declaration28(@PathVariable("day") String day) {
+		return "main/declaration" + day;
 	}
 }

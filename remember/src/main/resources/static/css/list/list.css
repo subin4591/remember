@@ -145,11 +145,16 @@ a:hover {
 	background-color: var(--back);
 	margin-left: 10px;
 }
-.liProfile img {
+.yesProfile, .noProfile {
 	object-fit: cover;
-	object-position: center center;
 	width: 100%;
 	height: 100%;
+}
+.yesProfile {
+	object-position: center center;
+}
+.noProfile {
+	object-position: center top;
 }
 .liInfo {
 	display: flex;

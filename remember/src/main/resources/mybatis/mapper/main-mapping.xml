@@ -16,10 +16,4 @@
 		order by sum(count) desc
 		limit #{start}, #{end}
 	</select>
-	
-	<!-- Test -->
-	<insert id="insertTest" parameterType="quotationDto">
-		insert into quotation(mng_no, name, contents)
-		values(#{mng_no}, #{name}, #{contents})
-	</insert>
 </mapper>
