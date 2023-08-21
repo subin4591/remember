@@ -1,9 +1,13 @@
 package service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.MypageDAO;
+import dto.CommentDTO;
+import dto.LikeDTO;
 import dto.UserDTO;
 
 @Service
@@ -31,4 +35,11 @@ public class MypageServiceImpl implements MypageService {
 		return mypagedao.deleteComment(dto);
 	}
 
+	public List<LikeDTO> getLike(String user_id) {
+		return mypagedao.getLike(user_id);
+	}
+	
+	public List<CommentDTO> getComment(String user_id) {
+		return mypagedao.getComment(user_id);
+	}
 }

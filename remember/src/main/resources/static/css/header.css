@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+header {
+	min-width: 1240px;
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid var(--main);
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.logo {
+	flex:1.5;
+}
+
+.logo img {
+	width: 200px;
+}
+
+.headerlist {
+	flex:7;
+}
+
+.headerlist ul {
+	display: flex;
+	justify-content: center; /* 가로 방향 중앙 정렬 */
+	align-items: center; /* 세로 방향 중앙 정렬 */
+	gap : 50px;
+}
+
+.headerlist a:hover {
+	border-bottom: 2px solid var(--main);
+}
+
+.profile {
+	flex:1.5;
+	display: flex;
+	justify-content: flex-end;
+	gap : 50px;
+	padding-right: 50px;
+}

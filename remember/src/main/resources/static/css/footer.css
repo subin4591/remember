@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+footer {
+	min-width: 1240px;
+	border-top: 2px solid var(--main);
+	margin-top: 20px;
+	padding-top: 30px;
+	padding-bottom: 5px;
+	background-color: var(--sub1);
+}
+
+footer p {
+	text-align: center;
+	font-size: 24px;
+}
+
+.footerlogo {
+	display: flex;
+	gap : 10px;
+	align-items : center;
+	justify-content: center;
+	margin-top: 20px;
+}
+.footerlogo img {
+	width: 200px;
+}
+
+.copyright p {
+	text-align: center;
+	font-size: 12px;
+	margin-bottom: 10px;
+}
