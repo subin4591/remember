@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>기억하길</title>
+	<link href="/image/icon.png" rel="icon">
 	<link href="/css/style.css" rel=stylesheet>
 	<script src="/js/jquery-3.6.4.min.js"></script>
 	<script>

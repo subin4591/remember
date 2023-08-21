@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>기억하길</title>
+	<link href="/image/icon.png" rel="icon">
 	<link href="/css/style.css" rel=stylesheet>
 	<link href="/css/list/list.css" rel=stylesheet>
 	<link href="/css/list/search.css" rel=stylesheet>
@@ -52,7 +53,7 @@
 						if (totalCnt == 0) {
 							$("#searchList").hide();
 							$("#searchNot").show();
-						}
+						}	// 검색 결과 미존재 end
 						
 						// 검색 결과 존재
 						else {
@@ -95,7 +96,7 @@
 									$(this).html(text.replace(searchInput, "<span class='setColor'>" + searchInput + "</span>"))
 								}
 							});	// 검색어 색 변경 end	
-						}
+						}	// 검색 결과 존재 end
 					}	// success end
 				});	// ajax end
 			}	// getSearch end

@@ -23,6 +23,7 @@ public class ListController {
 	@Qualifier("listService")
 	ListService service;
 	
+	// 페이지 당 목록 개수
 	int divNum = 12;
 	
 	// 목록 화면
