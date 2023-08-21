@@ -12,7 +12,7 @@
 	<form  method="post" name = "loginform" action="/Login" id="login_form">
         <input type="text" 
         class = "id-pw" 
-        name ="member_id" 
+        name ="user_id" 
         id = "id" 
         alt="id입력"
         placeholder="아이디 입력" 
