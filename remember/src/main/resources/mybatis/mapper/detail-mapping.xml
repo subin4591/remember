@@ -14,12 +14,13 @@
 	</insert>
 	
 	<select id="selectComment" parameterType="int" resultType="hashmap">
-		SELECT *, u.name
+		SELECT *, (SELECT count(*) FROM comment) AS 'totalCount',
+			u.name
 		FROM comment c
 		LEFT JOIN user u ON c.user_id = u.user_id
 		WHERE mng_no=#{mng_no}
 		ORDER BY c.created_at DESC, comment_id DESC
-		<!-- LIMIT 10 OFFSET #{page}; -->
+		LIMIT 5 OFFSET #{page};
 	</select>
 	
 	<insert id="insertComment" parameterType="map">

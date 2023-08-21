@@ -194,7 +194,7 @@ article {
 	padding: 30px 20px;
 }
 
-.commentWrap > * {
+.commentWrap .commentList> * {
 	margin-bottom: 30px;
 }
 
@@ -217,6 +217,9 @@ article {
 	align-items: center;
 	justify-content: space-between;
 }
+.inputWrap:first-of-type {
+	margin-bottom: 30px;	
+}
 
 .inputWrap input {
 	width: 95%;
@@ -230,7 +233,7 @@ article {
 	color: var(--white);
 }
 
-.commentList {
+.commentList > div {
 	width: 100%;
 	border: 1px solid var(--main);
 	border-radius: 8px;

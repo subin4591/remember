@@ -19,8 +19,8 @@ public class DetailService {
 	public void insertLike(int mng_no, String id) {
 		dao.insertLike(mng_no, id);
 	}
-	public List<CommentDTO> selectComment(int mng_no){
-		return dao.selectComment(mng_no);
+	public List<CommentDTO> selectComment(int mng_no, int page){
+		return dao.selectComment(mng_no, page);
 	}
 	public void insertComment(int mng_no, String id, String contents) {
 		dao.insertComment(mng_no, id, contents);
