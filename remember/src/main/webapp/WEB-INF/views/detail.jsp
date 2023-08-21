@@ -11,7 +11,9 @@
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/detail/detail.css" />
 <link rel="stylesheet" href="/css/detail/tabMenu.css" />
+<link rel="stylesheet" href="/css/detail/pagination.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
+<script>var user_id = '<%=session.getAttribute("user_id")%>';</script>
 <title>기억하길</title>
 </head>
 <body>
@@ -93,36 +95,8 @@
 					onclick="insertComment()">입력</button>
 			</div>
 
-			<c:forEach var="comment" items="${commentList}">
-				<div class="commentList">
-					<div class="text" style="display: block;">
-						<div class="commentInfo">
-							<p>${comment.name}</p>
-							<p id="date">
-								<fmt:formatDate value="${comment.created_at}"
-									pattern="yyyy-MM-dd HH:mm" />
-							</p>
-							<c:if test="${user_id eq comment.user_id}">
-								<button id="${comment.comment_id}" onclick="changeInput(this)">수정</button>
-							•
-							<button id="${comment.comment_id}" onclick="deleteComment()">삭제</button>
-							</c:if>
-						</div>
-						<p>${comment.contents}</p>
-					</div>
-					<div class="edit" style="display: none;">
-						<div class="commentInfo">
-							<p>${comment.name}</p>
-							<button id="${comment.comment_id}" onclick="editComment(this)">수정</button>
-							•
-							<button id="${comment.comment_id}" onclick="cancelComment(this)">취소</button>
-						</div>
-						<div class="inputWrap">
-							<input type="text" name="editComment" class="commentInput" value="${comment.contents}" />
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+			<div class="commentList" id="commentList"></div>
+			<div id="pagination"></div>
 		</div>
 
 		<div class="bottomTap">
@@ -137,6 +111,8 @@
 	<script src="/js/detail/detail.js"></script>
 	<script src="/js/detail/tabMenu.js"></script>
 	<script src="/js/detail/insertLike.js"></script>
+	<script src="/js/detail/pagination.js"></script>
+	<script src="/js/detail/getDate.js"></script>
 	<script src="/js/detail/comment.js"></script>
 </body>
 </html>

@@ -1,0 +1,60 @@
+#pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#pagination .prev#prevActive,
+#pagination .next#nextActive {
+  background-color: var(--point);
+  cursor: pointer;
+}
+#pagination .prev,
+#pagination .next {
+  border-radius: 5px;
+}
+#pagination .prev,
+#pagination .next,
+#pagination .pageNumber {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 25px;
+}
+#pagination .prevArrow,
+#pagination .nextArrow {
+  height: 8px;
+  width: 8px;
+  border: solid var(--main);
+  border-width: 2px 2px 0 0;
+}
+
+.pageNumber {
+  font: var(--body14);
+  margin: 0 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  padding-top: 3px;
+}
+.pageNumber.active {
+  background-color: var(--point);
+  font: var(--highlight14);
+}
+.pageNumber:last-of-type {
+  margin-right: 0 !important;
+}
+
+.prev,
+.next {
+  margin: 0 5px;
+  border: 1px solid var(--point);
+}
+.prevArrow {
+  transform: rotate(-135deg);
+  margin-left: 3px;
+}
+.nextArrow {
+  transform: rotate(45deg);
+  margin-right: 3px;
+}

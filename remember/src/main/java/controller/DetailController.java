@@ -21,10 +21,8 @@ public class DetailController {
 	@RequestMapping("/detail")
 	public String detail(Model model, HttpSession session, @RequestParam("mng_no") int mng_no) {
 		int likeCount = service.likeCount(mng_no);
-		List<CommentDTO> commentList = service.selectComment(mng_no);
 
 		model.addAttribute("likeCount", likeCount);
-		model.addAttribute("commentList", commentList);
 
 		return "detail";
 	}
@@ -42,6 +40,16 @@ public class DetailController {
 		}
 
 		return likeCount;
+	}
+
+	@ResponseBody
+	@RequestMapping("/api/commentList")
+	public List<CommentDTO> listComment(int mng_no, int page) {
+		int pages = (page - 1) * 5;
+		
+		List<CommentDTO> commentList = service.selectComment(mng_no, pages);
+		
+		return commentList;
 	}
 
 	@ResponseBody
