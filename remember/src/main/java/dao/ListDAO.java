@@ -11,10 +11,15 @@ import dto.ListDTO;
 @Repository
 public interface ListDAO {
 	/// List select
-	// 각 독립유공자 별 존경해요, 댓글 개수 (default)
-	public List<ListDTO> listLikeComment(ListDTO dto);
+	// 존경해요 개수
+	public Integer getListLike(int mng_no);
 	
-	// 각 독립유공자 별 존경해요, 댓글 개수 (sort)
-	public List<ListDTO> listSort(ListDTO dto);
-	public int listSortCount();
+	// 댓글 개수
+	public Integer getListComment(int mng_no);
+	
+	// 정렬
+	public List<Integer> sortList(ListDTO dto);
+	
+	// 정렬 개수
+	public Integer sortListCount(ListDTO dto);
 }

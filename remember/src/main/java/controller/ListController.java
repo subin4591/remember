@@ -39,12 +39,22 @@ public class ListController {
 	// DB 조회
 	@RequestMapping("/list/DB")
 	@ResponseBody
-	public List<ListDTO> listDB(@RequestParam("mngNoList[]") ArrayList<Integer> mngNoList) {
-		// ListDTO 생성
-		ListDTO dto = new ListDTO();
-		dto.setMngNoList(mngNoList);
+	public ArrayList<ListDTO> listDB(@RequestParam("mngNoList[]") ArrayList<Integer> mngNoList) {
+		// ArrayList 생성
+		ArrayList<ListDTO> list = new ArrayList<>();
 		
-		return service.listLikeComment(dto);
+		// ListDTO 생성
+		for (int i = 0; i < mngNoList.size(); i++) {
+			int mngNo = mngNoList.get(i);
+			
+			ListDTO dto = new ListDTO();
+			dto.setMng_no(mngNo);
+			dto.setLike(service.getListLike(mngNo));
+			dto.setComment(service.getListComment(mngNo));
+			list.add(dto);
+		}
+		
+		return list;
 	}
 	
 	// 정렬 DB 조회
@@ -57,8 +67,8 @@ public class ListController {
 		dto.calcNum(page, divNum);
 		
 		// 목록 및 총 개수
-		List<ListDTO> list = service.listSort(dto);
-		int cnt = service.listSortCount();
+		List<Integer> list = service.sortList(dto);
+		int cnt = service.sortListCount(dto);
 		
 		// HashMap 생성
 		HashMap<String, Object> map = new HashMap<>();

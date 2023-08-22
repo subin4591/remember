@@ -40,5 +40,5 @@
 
 /* setColor */
 .setColor {
-	color: var(--main);
+	background-color: var(--point);
 }

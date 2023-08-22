@@ -8,7 +8,7 @@ main {
 	justify-content: center;
 }
 main a:hover {
-	border-bottom: 2px solid var(--main);
+	border-bottom: 2px solid var(--point);
 }
 
 /* mainSearch */
@@ -213,15 +213,15 @@ main a:hover {
 }
 .pageChange, .pageBtn {
 	height: 30px;
+	color: var(--gray1);
 }
 .pageChange {
 	width: 30px;
 	font: var(--button16);
-	color: var(--main);
-	border: 1.5px solid var(--main);
+	border: 1.5px solid var(--point);
 }
 .pageChange:hover {
-	background-color: var(--main);
+	background-color: var(--point);
 	color: white;
 }
 .strongPrev {
@@ -242,6 +242,7 @@ main a:hover {
 }
 .pageBtn {
 	margin: 0 5px;
+	padding: 0 5px;
 	font: var(--body16);
 }
 .pageBtn:hover {
@@ -249,5 +250,5 @@ main a:hover {
 }
 .pageActive {
 	font-weight: bold;
-	color: var(--main);
+	color: var(--point);
 }
