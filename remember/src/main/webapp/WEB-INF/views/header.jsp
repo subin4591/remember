@@ -3,9 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <meta charset="UTF-8">
-<link href="/css/style.css" rel=stylesheet>
 <link href="/css/header.css" rel=stylesheet>
 <link href="/image/icon.png" rel="icon">
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+	$(document).ready(function() {
+		// 현재 url
+		let url = window.location.href;
+		url = url.replace(window.location.protocol + "//" + window.location.host, "");
+	
+		// a에 activePage 추가
+		$(`.headerlist a[href="\${ url }"]`).addClass("activePage");
+	});
+</script>
 
 <header>
 	<div class='logo' onclick="window.location.href='/'">
@@ -21,7 +32,7 @@
 		</ul>
 	</div>
 	
-	<div class="profile">
+	<div class="headerProfile">
 		<c:choose>
 			<c:when test="${empty user}">
 				<a href="#"><img alt="로그인" src="/image/login.png"></a>

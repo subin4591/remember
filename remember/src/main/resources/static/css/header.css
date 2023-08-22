@@ -2,6 +2,7 @@
 
 header {
 	min-width: 1240px;
+	height: 80px;
 	display: flex;
 	align-items: center;
 	border-bottom: 2px solid var(--main);
@@ -11,10 +12,12 @@ header {
 
 .logo {
 	flex:1.5;
+	cursor: pointer;
 }
 
 .logo img {
 	width: 200px;
+	margin-left: 50px;
 }
 
 .headerlist {
@@ -32,10 +35,15 @@ header {
 	border-bottom: 2px solid var(--main);
 }
 
-.profile {
+.headerProfile {
 	flex:1.5;
 	display: flex;
 	justify-content: flex-end;
 	gap : 50px;
 	padding-right: 50px;
+}
+
+.activePage {
+	font-weight: bold;
+	color: var(--main);
 }

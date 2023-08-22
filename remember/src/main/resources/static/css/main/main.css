@@ -210,3 +210,6 @@ main {
 .noProfile {
 	object-position: center top;
 }
+#mainAllList {
+	margin-bottom: 50px;
+}

@@ -7,6 +7,29 @@
 <link href="/css/footer.css" rel=stylesheet>
 <link href="/image/icon.png" rel="icon">
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+	$(document).ready(function() {
+		// 스크롤 위치에 따른 버튼 표시 여부
+		$(window).scroll(function() {
+			if ($(window).scrollTop() > 300) {
+				$("#goTop").show();
+			}
+			else {
+				$("#goTop").hide();
+			}
+		});
+		
+		// 페이지 맨 위로 스크롤 이동
+		$("#goTop").on("click", function() {
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth"
+			});
+		});
+	});
+</script>
+
 <footer>
 	<div>
 		<p>나라를 위해 싸워주신 독립운동가들과 국민들이 있었기에<br>지금 우리가 이 자리에 있을 수 있습니다.<br><br>
@@ -26,4 +49,6 @@
 	<div class="copyright">
 		<p>Copyright © REMEMBER. All Rights Reserved.</p>
 	</div>
+	
+	<button id="goTop">^<br>TOP</button>
 </footer>
