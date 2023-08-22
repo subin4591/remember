@@ -21,7 +21,11 @@ $(document).ready(function () {
   request1.send();
   request1.onload = function () {
     let items = JSON.parse(this.response).ITEMS[0];
-
+    
+	if (items == undefined) {
+		return window.history.back();
+	}
+	
     mng_no.innerText = items.MNG_NO;
     name_ko.innerText = items.NAME_KO;
     name_ch.innerText = `(${items.NAME_CH})`;
@@ -46,6 +50,13 @@ $(document).ready(function () {
       "(",
       "<span class='hanja'>("
     ).replaceAll(")", ")</span>")}`;
+    
+    
+    let errorLink = document.getElementsByClassName("errorWrap")[0];
+    let aLink = 'https://e-gonghun.mpva.go.kr/user/ContribuReportDetail.do?goTocode=20001&pageTitle=Report&mngNo='
+    
+    errorLink.innerHTML = `<a href="${aLink}${items.MNG_NO}">${aLink}${items.MNG_NO}</a>`
+
 
     var metaTitle = document.createElement("meta");
     var metaDescription = document.createElement("meta");
