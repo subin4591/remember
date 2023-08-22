@@ -7,8 +7,8 @@ main {
 	align-items: center;
 	justify-content: center;
 }
-a:hover {
-	text-decoration: underline;
+main a:hover {
+	border-bottom: 2px solid var(--main);
 }
 
 /* mainSearch */
