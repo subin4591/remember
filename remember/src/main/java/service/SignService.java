@@ -23,6 +23,9 @@ public interface SignService {
     int dupliFindEmailcheck(String user_id, String email);
     
     void Findpwupdate(UserDTO userDTO);
+	UserDTO MyInfo(String user_id);
+	int updatemember(UserDTO UserDTO);
+	int deletemember(String user_id);
 
 }
     
