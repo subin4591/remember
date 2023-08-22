@@ -1,5 +1,6 @@
 package service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import dto.CommentDTO;
@@ -17,7 +18,11 @@ public interface MypageService {
 
 	public int deleteComment(String user_id);
 	
-	public List<LikeDTO> getLike(String user_id);
+	public List<LikeDTO> getLike(HashMap<String, Object> llistmap);
 	
-	public List<CommentDTO> getComment(String user_id);
+	public int getLikeCount(String user_id);
+	
+	public List<CommentDTO> getComment(HashMap<String, Object> cmtlistmap);
+	
+	public int getCommentCount(String user_id);
 }

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="/image/icon.png" rel="icon">
 <link href="/css/style.css" rel=stylesheet>
 <link href="/css/mypage/myinfo.css" rel=stylesheet>
 <script src="/js/jquery-3.6.4.min.js"></script>
@@ -39,9 +40,11 @@ $(document).ready(
 
 		});
 </script>
-<title>MyInfo</title>
+<title>회원 정보</title>
 </head>
 <body>
+	<%@ include file="../header.jsp"%>
+	
 	<div class="my_wrap">
 		<div class="my_title">
 			<p>회원 정보</p>
@@ -86,5 +89,7 @@ $(document).ready(
 			</div>
 		</div>
 	</div>
+	
+	<%@ include file="../footer.jsp"%>
 </body>
 </html>
