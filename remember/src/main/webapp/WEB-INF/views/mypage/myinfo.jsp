@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <link href="/css/style.css" rel=stylesheet>
 <link href="/css/mypage/myinfo.css" rel=stylesheet>
+<script src="/js/jquery-3.6.4.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#editUser").click(function() {
+        window.location.href = "/myinfoedit"; // 클릭 시 /myinfoedit로 이동
+    });
+});
+</script>
 <title>MyInfo</title>
 </head>
 <body>

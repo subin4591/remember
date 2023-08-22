@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import dto.CommentDTO;
 import dto.LikeDTO;
 import dto.UserDTO;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import service.MypageService;
 
 @Controller
@@ -29,20 +31,20 @@ public class MypageController {
 
 	// 유저 정보 조회 페이지 출력
 	@GetMapping("/myinfo")
-	public ModelAndView myInfo(@SessionAttribute(name = "logininfo", required = false) UserDTO dto,
-			HttpServletResponse response) {
+	public ModelAndView myInfo(HttpSession session,	HttpServletResponse response) {
 
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		response.setDateHeader("Expires", 0); // Proxies.
 
 		ModelAndView mv = new ModelAndView();
+		
+		String userId = "dacc4b81-3c10-11ee-a741-d8bbc13a7098";
 
-		if (dto != null) {
-			UserDTO user = service.getUser(dto.getUser_id());
-			dto.setPassword(user.getPassword());
+		if (userId != null) {
+			UserDTO user = service.getUser(userId);
 
-			mv.addObject("user", dto);
+			mv.addObject("user", user);
 			mv.setViewName("mypage/myinfo");
 		} else {
 			mv.setViewName("Ylogin");
@@ -53,17 +55,20 @@ public class MypageController {
 
 	// 유저 정보 수정 페이지 출력
 	@GetMapping("/myinfoedit")
-	public ModelAndView myedit(@SessionAttribute(name = "logininfo", required = false) UserDTO dto,
-			HttpServletResponse response) {
+	public ModelAndView myedit(HttpSession session,	HttpServletResponse response) {
 
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		response.setDateHeader("Expires", 0); // Proxies.
 
 		ModelAndView mv = new ModelAndView();
+		
+		String userId = "dacc4b81-3c10-11ee-a741-d8bbc13a7098";
 
-		if (dto != null) {
-			mv.addObject("user", dto);
+		if (userId != null) {
+			UserDTO user = service.getUser(userId);
+			
+			mv.addObject("user", user);
 			mv.setViewName("mypage/myinfoedit");
 		} else {
 			mv.setViewName("Ylogin");
@@ -98,18 +103,16 @@ public class MypageController {
 
 	// 유저 정보 수정
 	@PostMapping("/myinfoedit")
-	public String myupdate(@SessionAttribute(name = "logininfo", required = false) UserDTO dto,
-			HttpServletResponse response, String password) {
+	public String myupdate(HttpSession session,	HttpServletResponse response, @RequestParam String password) {
 
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		response.setDateHeader("Expires", 0); // Proxies.
-
-		if (dto != null) {
-			UserDTO updto = new UserDTO();
-			updto.setPassword(password);
-
-			service.userUpdate(updto);
+		
+		String userId = (String) session.getAttribute("user_id");
+		
+		if (userId != null) {
+			service.userUpdate(password);
 
 			return "redirect:/myinfoedit";
 		} else {
@@ -119,17 +122,19 @@ public class MypageController {
 
 	// 유저 정보 삭제
 	@RequestMapping("/myinfodelete")
-	public String myDelete(@SessionAttribute(name = "logininfo", required = false) UserDTO dto,
+	public String myDelete(HttpSession session,
 			HttpServletResponse response) {
 
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		response.setDateHeader("Expires", 0); // Proxies.
+		
+		String userId = (String) session.getAttribute("user_id");
 
-		if (dto != null) {
-			service.deleteComment(dto);
-			service.deleteLike(dto);
-			service.deleteUser(dto);
+		if (userId != null) {
+			service.deleteComment(userId);
+			service.deleteLike(userId);
+			service.deleteUser(userId);
 		}
 
 		return "redirect:/Ylogin";
