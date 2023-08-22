@@ -19,20 +19,20 @@ public class MypageServiceImpl implements MypageService {
 		return mypagedao.getUser(user_id);
 	}
 	
-	public int userUpdate(UserDTO dto) {
-		return mypagedao.userUpdate(dto);
+	public int userUpdate(String user_id) {
+		return mypagedao.userUpdate(user_id);
 	}
 	
-	public int deleteUser(UserDTO dto) {
-		return mypagedao.deleteUser(dto);
+	public int deleteUser(String user_id) {
+		return mypagedao.deleteUser(user_id);
 	}
 
-	public int deleteLike(UserDTO dto) {
-		return mypagedao.deleteLike(dto);
+	public int deleteLike(String user_id) {
+		return mypagedao.deleteLike(user_id);
 	}
 
-	public int deleteComment(UserDTO dto) {
-		return mypagedao.deleteComment(dto);
+	public int deleteComment(String user_id) {
+		return mypagedao.deleteComment(user_id);
 	}
 
 	public List<LikeDTO> getLike(String user_id) {

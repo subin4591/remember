@@ -14,13 +14,13 @@ import dto.UserDTO;
 public interface MypageDAO {
 	public UserDTO getUser(String user_id);
 
-	public int userUpdate(UserDTO dto);
+	public int userUpdate(String user_id);
 
-	public int deleteUser(UserDTO dto);
+	public int deleteUser(String user_id);
 
-	public int deleteLike(UserDTO dto);
+	public int deleteLike(String user_id);
 
-	public int deleteComment(UserDTO dto);
+	public int deleteComment(String user_id);
 	
 	public List<LikeDTO> getLike(String user_id);
 	
