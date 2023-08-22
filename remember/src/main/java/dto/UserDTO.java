@@ -12,8 +12,5 @@ import lombok.NoArgsConstructor;
 public class UserDTO {
 	String user_id, id, name, password, email;
 	Date created_at, deleted_at;
-	public Object getid() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

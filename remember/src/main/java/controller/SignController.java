@@ -28,7 +28,7 @@ public class SignController{
 		Map<String, Object> map = new HashMap<>();
 		if(my_info != null && my_info.getPassword().equals(password)) {
 				session.setAttribute("user_id",my_info.getUser_id());
-				session.setAttribute("id", my_info.getid());
+				session.setAttribute("id", my_info.getId());
 				
 				map.put("user_id", my_info.getUser_id());				
 				return "redirect:/" ;

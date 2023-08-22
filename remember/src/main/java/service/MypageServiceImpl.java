@@ -19,8 +19,8 @@ public class MypageServiceImpl implements MypageService {
 		return mypagedao.getUser(user_id);
 	}
 	
-	public int userUpdate(String user_id) {
-		return mypagedao.userUpdate(user_id);
+	public int userUpdate(String user_id, String password) {
+		return mypagedao.userUpdate(user_id, password);
 	}
 	
 	public int deleteUser(String user_id) {

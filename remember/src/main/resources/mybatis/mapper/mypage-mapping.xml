@@ -16,7 +16,7 @@
 	</delete>
 	
 	<delete id="deleteLike" parameterType="String">
-		DELETE FROM like WHERE user_id = #{user_id};
+		DELETE FROM `like` WHERE user_id = #{user_id};
 	</delete>
 	
 	<delete id="deleteComment" parameterType="String">

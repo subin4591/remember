@@ -9,7 +9,7 @@ import dto.UserDTO;
 public interface MypageService {
 	public UserDTO getUser(String user_id);
 	
-	public int userUpdate(String user_id);
+	public int userUpdate(String user_id, String password);
 	
 	public int deleteUser(String user_id);
 

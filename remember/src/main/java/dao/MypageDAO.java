@@ -14,7 +14,7 @@ import dto.UserDTO;
 public interface MypageDAO {
 	public UserDTO getUser(String user_id);
 
-	public int userUpdate(String user_id);
+	public int userUpdate(String user_id, String password);
 
 	public int deleteUser(String user_id);
 
