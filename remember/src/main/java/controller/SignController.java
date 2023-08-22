@@ -1,22 +1,52 @@
 package controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import dto.UserDTO;
+import jakarta.servlet.http.HttpSession;
 import service.SignService;
-
+@Controller
 public class SignController{
 
 	@Autowired
 	@Qualifier("SignService")
 	SignService Ss;
+	//로그인구현	
+	@RequestMapping("/Login")
+	public String loginprocess(String user_id, String password, HttpSession session) {
+		UserDTO my_info = Ss.MyInfo(user_id);
+		Map<String, Object> map = new HashMap<>();
+		if(my_info != null && my_info.getPassword().equals(password)) {
+				session.setAttribute("user_id",my_info.getUser_id());
+				session.setAttribute("id", my_info.getid());
+				
+				map.put("user_id", my_info.getUser_id());				
+				return "redirect:/" ;
+			}
+		else {
+		session.setAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
+		session.setAttribute("url", "/Login");
+		return "redirect:/alert";
+	}
+		
+
+	}
+	
 	
 	
 	
 	//회원가입
-	@RequestMapping("/")
+	@RequestMapping("/Signup")
 	public ModelAndView signup() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Signup");	
@@ -36,18 +66,6 @@ public class SignController{
 	}
 	
 	
-	/*
-	@PostMapping("/signup")
-	public String signup(UserDTO UserDTO) {
-		
-		String password = UserDTO.getPassword();
-		String hashPassword = hashService.encodeBcrypt(password, HashNum);
-		UserDTO.setPassword(hashPassword);
-		if(Ss.insertMember(UserDTO)>0) {
-			return "redirect:/Signin";
-		}
-		else return "Signup";
-	}
 	
 	//회원가입시 중복체크
 	@PostMapping("/dupliIDCheck")
@@ -75,13 +93,12 @@ public class SignController{
 	//비밀번호찾기시 임시비밀번호 변경
 		@PostMapping("/Findpwupdate")
 		public String Findpwupdate(UserDTO UserDTO) {
-			String password = UserDTO.getPassword();
-			String hashPassword = hashService.encodeBcrypt(password, HashNum);
-			MemberDTO.setPassword(hashPassword);
+			String password = UserDTO.getPassword();			
 			Ss.Findpwupdate(UserDTO);
 			
 			return"/Findpasswordend";
 		}
+		/*
 		
 	//이메일 구현단
 		@Autowired
@@ -99,7 +116,6 @@ public class SignController{
 			}
 			int numIndex=random.nextInt(99999)+10000; 
 			key+=numIndex;
-			
 			MimeMessage message = javaMailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
 			String mail = "dlsdlqordl@naver.com";
@@ -142,7 +158,7 @@ public class SignController{
 			
 	        return key;	
 	        }
-		*/
-	
+		
+	*/
 }
 	

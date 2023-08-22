@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="dao.SignDAO">
+  	<insert id="insertMember" parameterType="UserDTO">
+  		INSERT INTO user(user_id,name,phone,email,password) value(#{user_id},#{name},#{phone},#{email},#{password})
+  	</insert>
+  	<select id="dupliIDcheck" parameterType="String" resultType="int">
+		SELECT COUNT(user_id) FROM user where user_id= #{user_id}
+	</select>
+	<select id="dupliEmailcheck" parameterType="String" resultType="int">
+		SELECT COUNT(email) FROM user where email= #{email}
+	</select>
+	<select id="dupliFindEmailcheck" parameterType="String" resultType="int">
+		SELECT COUNT(user_id= #{user_id}) FROM user where email= #{email}
+	</select>
+  	<select parameterType="String" resultType="UserDTO" id="MyInfo">
+  		select * from user where user_id = #{user_id}
+  	</select>
+  	<update parameterType="UserDTO" id="updatemember">
+  		update user set  name= #{name} where user_id =#{user_id}
+  	</update>
+  	
+  	<update parameterType="UserDTO" id="Findpwupdate">
+  		update user set  password=#{password} where user_id =#{user_id}
+  	</update>
+
+	
+
+  </mapper>
