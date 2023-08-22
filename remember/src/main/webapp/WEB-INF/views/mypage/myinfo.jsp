@@ -8,11 +8,36 @@
 <link href="/css/mypage/myinfo.css" rel=stylesheet>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script>
-$(document).ready(function() {
-    $("#editUser").click(function() {
-        window.location.href = "/myinfoedit"; // 클릭 시 /myinfoedit로 이동
-    });
-});
+$(document).ready(
+		function() {
+			$("#editUser").on('click', function() {
+				location.href = "/myinfoedit"
+			});
+
+			$("#deleteUser").on(
+					'click',
+					function() {
+						if (confirm("정말로 탈퇴하시겠습니까?")) {
+							$.ajax({
+								url : '/myinfodelete',
+								
+								type : 'get',
+								success : function(res) {
+									alert("회원 탈퇴가 완료되었습니다.");
+								},
+								error : function(request, status, e) {
+									alert("코드=" + request.status + "\n메시지="
+											+ request.responseText
+											+ "\nerror=" + e);
+								}
+							});
+						} else {
+							alert("회원 탈퇴를 취소합니다.");
+						}
+
+					});
+
+		});
 </script>
 <title>MyInfo</title>
 </head>
@@ -27,16 +52,16 @@ $(document).ready(function() {
 					<a href="/myinfo">회원 정보</a>
 				</div>
 				<div class="menu2" style="color: var(--gray3)">
-					<a href="/mypage/myinfo">존경해요</a>
+					<a href="/mylike">존경해요</a>
 				</div>
 				<div class="menu3" style="color: var(--gray3)">
-					<a href="/mypage/myinfo">작성 댓글</a>
+					<a href="/mycomment">작성 댓글</a>
 				</div>
 			</div>
 			<div class="myinfo">
 				<div class='myedit'>
 					<p>아이디</p>
-					<input type="text" name="memId" id="memId" value="${user.id }" disabled>
+					<input type="text" name="memId" id="memId" value="${user.id}" disabled>
 				</div>
 				<div class='myedit'>
 					<p>비밀번호</p>

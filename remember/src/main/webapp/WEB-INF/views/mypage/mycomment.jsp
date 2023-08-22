@@ -21,10 +21,10 @@
 					<a href="/myinfo">회원 정보</a>
 				</div>
 				<div class="menu2" style="color: var(--gray3)">
-					<a href="/mypage/myinfo">존경해요</a>
+					<a href="/mylike">존경해요</a>
 				</div>
 				<div class="menu3">
-					<a href="/mypage/myinfo">작성 댓글</a>
+					<a href="/mycomment">작성 댓글</a>
 				</div>
 			</div>
 			<div class="mycomment">
@@ -35,21 +35,19 @@
 				</div>
 				<div class="comment">
 					<c:choose>
-							<c:when test="${empty MyBoard}">
+							<c:when test="${empty comment}">
 								<p>내가 쓴 글이 없습니다.</p>
 							</c:when>
 							<c:otherwise>
-								<c:forEach items="${comment}" var="comment" varStatus="status">
+								<c:forEach items="${comment}" var="cmt" varStatus="status">
 									<div class="mycommentlist">
-										<div class="num" id="boardid">${status.index + 1 + (currentpPage - 1) * 10}</div>
+										<div class="num" id="boardid">${status.index + 1}</div>
 										<div class="title" id="title">
-											<a href="/detail?mng_no=${comment.mng_no}">${comment.contents}</a>
+											<a href="/detail?mng_no=${cmt.mng_no}">${cmt.contents}</a>
 										</div>
-										<div class="date" id="creatAt">
-											<fmt:parseDate value="${comment.created_at}"
-												pattern="yyyy-MM-dd HH:mm:ss" var="parsedDate" />
-											<fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd" />
-										</div>
+										<div class="date" id="createdAt">
+										<fmt:formatDate value="${cmt.created_at}" pattern="yyyy-MM-dd HH:mm:ss" />
+									</div>
 									</div>
 								</c:forEach>
 							</c:otherwise>

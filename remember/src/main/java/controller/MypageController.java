@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 
@@ -24,11 +23,6 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 
-	@RequestMapping("/header")
-	public String logo() {
-		return "mypage/mylike";
-	}
-
 	// 유저 정보 조회 페이지 출력
 	@GetMapping("/myinfo")
 	public ModelAndView myInfo(HttpSession session,	HttpServletResponse response) {
@@ -39,7 +33,7 @@ public class MypageController {
 
 		ModelAndView mv = new ModelAndView();
 		
-		String userId = "dacc4b81-3c10-11ee-a741-d8bbc13a7098";
+		String userId = (String) session.getAttribute("user_id");
 
 		if (userId != null) {
 			UserDTO user = service.getUser(userId);
@@ -63,7 +57,7 @@ public class MypageController {
 
 		ModelAndView mv = new ModelAndView();
 		
-		String userId = "dacc4b81-3c10-11ee-a741-d8bbc13a7098";
+		String userId = (String) session.getAttribute("user_id");
 
 		if (userId != null) {
 			UserDTO user = service.getUser(userId);
@@ -77,32 +71,8 @@ public class MypageController {
 		return mv;
 	}
 
-	/*
-	 * // 유저 정보 수정
-	 * 
-	 * @PostMapping("/myinfoedit") public ModelAndView
-	 * myupdate(@SessionAttribute(name = "logininfo", required = false) UserDTO dto,
-	 * HttpServletResponse response, String password) {
-	 * 
-	 * response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-	 * // HTTP 1.1. response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-	 * response.setDateHeader("Expires", 0); // Proxies.
-	 * 
-	 * ModelAndView mv = new ModelAndView();
-	 * 
-	 * if (dto != null) { mv.addObject("user", dto);
-	 * 
-	 * UserDTO updto = new UserDTO(); updto.setPassword(password);
-	 * 
-	 * service.userUpdate(updto);
-	 * 
-	 * mv.setViewName("redirect:/myinfoedit"); } else { mv.setViewName("Ylogin"); }
-	 * 
-	 * return mv; }
-	 */
-
 	// 유저 정보 수정
-	@PostMapping("/myinfoedit")
+	@PostMapping("/editinfo")
 	public String myupdate(HttpSession session,	HttpServletResponse response, @RequestParam String password) {
 
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -112,11 +82,11 @@ public class MypageController {
 		String userId = (String) session.getAttribute("user_id");
 		
 		if (userId != null) {
-			service.userUpdate(password);
+			service.userUpdate(userId, password);
 
-			return "redirect:/myinfoedit";
+			return "redirect:/myinfo";
 		} else {
-			return "redirect:/Ylogin";
+			return "redirect:/";
 		}
 	}
 
@@ -137,31 +107,34 @@ public class MypageController {
 			service.deleteUser(userId);
 		}
 
-		return "redirect:/Ylogin";
+		return "redirect:/";
 	}
 
 	// 존경해요 한 글
 	@GetMapping("/mylike")
-	public ModelAndView mylike(@SessionAttribute(name = "logininfo", required = false) UserDTO dto,
-			HttpServletResponse response) {
+	public ModelAndView mylike(HttpSession session,	HttpServletResponse response) {
 		
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		response.setDateHeader("Expires", 0); // Proxies.
 
 		ModelAndView mv = new ModelAndView();
+		
+		String userId = (String) session.getAttribute("user_id");
 
-		if (dto != null) {
-			List<LikeDTO> like = service.getLike(dto.getUser_id());
+		if (userId != null) {
+			List<LikeDTO> like = service.getLike(userId);
 
 			List<String> mngNoList = new ArrayList<>();
 			for (LikeDTO likeItem : like) {
 				mngNoList.add(String.valueOf(likeItem.getMng_no()));
 			}
 
-			mv.addObject("user", dto);
+			mv.addObject("like", like);
+			mv.addObject("user", userId);
 			mv.addObject("mngNoList", mngNoList);
 			mv.setViewName("mypage/mylike");
+			
 		} else {
 			mv.setViewName("Ylogin");
 		}
@@ -171,19 +144,20 @@ public class MypageController {
 
 	// 작성 댓글
 	@GetMapping("/mycomment")
-	public ModelAndView mycomment(@SessionAttribute(name = "logininfo", required = false) UserDTO dto,
-			HttpServletResponse response) {
+	public ModelAndView mycomment(HttpSession session,	HttpServletResponse response) {
 
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		response.setDateHeader("Expires", 0); // Proxies.
 
 		ModelAndView mv = new ModelAndView();
+		
+		String userId = (String) session.getAttribute("user_id");
 
-		if (dto != null) {
-			List<CommentDTO> comment = service.getComment(dto.getUser_id());
+		if (userId != null) {
+			List<CommentDTO> comment = service.getComment(userId);
 
-			mv.addObject("user", dto);
+			mv.addObject("user", userId);
 			mv.addObject("comment", comment);
 			mv.setViewName("mypage/mycomment");
 		} else {
