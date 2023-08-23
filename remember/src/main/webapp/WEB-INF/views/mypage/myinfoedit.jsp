@@ -11,10 +11,9 @@
 <script>
 	$(document).ready(
 			function() {
-				const id = document.getElementById("memId");
 				const pw = document.getElementById("password");
 
-				function isPasswordValid(password) {
+				function isPasswordValid(pw) {
 					// 조건 1: 영문대소문자 + 숫자 조합
 					const regex1 = /^(?=.*[a-zA-Z])(?=.*\d).{8,16}$/;
 					// 조건 2: 영문대소문자 + 특수문자 조합
@@ -22,8 +21,8 @@
 					// 조건 3: 숫자 + 특수문자 조합
 					const regex3 = /^(?=.*\d)(?=.*[\W_]).{8,16}$/;
 
-					return regex1.test(password) || regex2.test(password)
-							|| regex3.test(password);
+					return regex1.test(pw) || regex2.test(pw)
+							|| regex3.test(pw);
 				}
 
 				// 다른 곳 클릭 시 비밀번호 유효성 검사
@@ -66,7 +65,9 @@
 							} else if (memPw !== memPw_confirm) {
 								alert("비밀번호가 일치하지 않습니다.");
 								$("#memPw_confirm").focus();
-							} else {
+							} else if (!isPasswordValid(memPw)) {
+						        alert("비밀번호 입력 조건을 만족해주세요.");
+						    } else {
 
 								$.ajax({
 									url : '/editinfo',
