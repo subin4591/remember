@@ -53,25 +53,13 @@ $(document).ready(function () {
     let aLink = 'https://e-gonghun.mpva.go.kr/user/ContribuReportDetail.do?goTocode=20001&pageTitle=Report&mngNo='
     
     errorLink.innerHTML = `<a href="${aLink}${items.MNG_NO}">${aLink}${items.MNG_NO}</a>`
-
-
-    var metaTitle = document.createElement("meta");
-    var metaDescription = document.createElement("meta");
-    var metaImg = document.createElement("meta");
-
-    metaTitle.property = "og:title";
-    metaDescription.property = "og:description";
-    metaImg.property = "og:image";
-
-    metaTitle.content = `${items.NAME_KO}(${items.NAME_CH})`;
-    metaDescription.content = `${items.ACHIVEMENT_KO}`;
-
+    
     let profileImg = document.getElementById("profileImg").src;
-    metaImg.content = profileImg;
+    
+    $('head').append(`<meta property="og:title" content="${items.NAME_KO}(${items.NAME_CH})">`)
+    $('head').append(`<meta property="og:description" content="${items.ACHIVEMENT_KO}">`)
+    $('head').append(`<meta property="og:image" content="${profileImg}">`)
 
-    document.getElementsByTagName("head")[0].appendChild(metaTitle);
-    document.getElementsByTagName("head")[0].appendChild(metaDescription);
-    document.getElementsByTagName("head")[0].appendChild(metaImg);
   };
 
   var request2 = new XMLHttpRequest();
