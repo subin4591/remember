@@ -19,7 +19,20 @@
 				$(`.headerlist a[href="\${ url }"]`).addClass("activePage");
 			});
 </script>
-
+<script>
+function logout() {
+	$.ajax({
+		type: "POST",
+		url: "/logout",
+		success: function() {
+			location.reload(); // 현재 페이지 리로드
+		},
+		error: function() {
+			alert("로그아웃 도중 오류가 발생했습니다.");
+		}
+	});
+}
+</script>
 <header>
 	<div class='logo' onclick="window.location.href='/'">
 		<img alt="기억할게 로고" src="/image/mainLogo.png">
