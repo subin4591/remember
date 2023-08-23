@@ -110,7 +110,7 @@ spring.datasource.username={YOUR_MYSQL_USERNAME}
 spring.datasource.password={YOUR_MYSQL_PASSWORD}
 
 mybatis.config-location=classpath:mybatis/mybatis-config.xml
-mybatis.mapper-locations=classpath:mybatis/mapper/\*-mapping.xml
+mybatis.mapper-locations=classpath:mybatis/mapper/*-mapping.xml
 
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
