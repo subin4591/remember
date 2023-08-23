@@ -28,7 +28,7 @@ public class DetailController {
 		}
 
 		model.addAttribute("likeCount", likeCount);
-		
+
 		return "detail";
 	}
 
@@ -63,9 +63,8 @@ public class DetailController {
 	@RequestMapping("/api/commentList")
 	public List<CommentDTO> listComment(int mng_no, int page) {
 		int pages = (page - 1) * 5;
-
 		List<CommentDTO> commentList = service.selectComment(mng_no, pages);
-
+		
 		return commentList;
 	}
 
