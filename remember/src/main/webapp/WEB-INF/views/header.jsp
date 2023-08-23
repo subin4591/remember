@@ -8,21 +8,23 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-	$(document).ready(function() {
-		// 현재 url
-		let url = window.location.href;
-		url = url.replace(window.location.protocol + "//" + window.location.host, "");
-	
-		// a에 activePage 추가
-		$(`.headerlist a[href="\${ url }"]`).addClass("activePage");
-	});
+	$(document).ready(
+			function() {
+				// 현재 url
+				let url = window.location.href;
+				url = url.replace(window.location.protocol + "//"
+						+ window.location.host, "");
+
+				// a에 activePage 추가
+				$(`.headerlist a[href="\${ url }"]`).addClass("activePage");
+			});
 </script>
 
 <header>
 	<div class='logo' onclick="window.location.href='/'">
 		<img alt="기억할게 로고" src="/image/mainLogo.png">
 	</div>
-	
+
 	<div class='headerlist'>
 		<ul>
 			<li><a href="/declaration/28">2.8 독립선언서</a></li>
@@ -31,7 +33,7 @@
 			<li><a href="/list?type=all">독립유공자</a></li>
 		</ul>
 	</div>
-	
+
 	<div class="headerProfile">
 		<c:choose>
 			<c:when test="${empty user_id}">
@@ -39,7 +41,8 @@
 			</c:when>
 			<c:when test="${not empty user_id}">
 				<a href="/myinfo"><img alt="마이페이지" src="/image/user.png"></a>
-				<a href="#" onclick="logout()"><img alt="로그아웃" src="/image/logout.png"></a>
+				<a href="#" onclick="logout()"><img alt="로그아웃"
+					src="/image/logout.png"></a>
 			</c:when>
 		</c:choose>
 	</div>
