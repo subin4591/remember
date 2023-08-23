@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import dto.CommentDTO;
 import dto.LikeDTO;
@@ -112,7 +113,7 @@ public class MypageController {
 
 	// 존경해요 한 글
 	@GetMapping("/mylike")
-	public ModelAndView mylike(HttpSession session,	HttpServletResponse response) {
+	public ModelAndView mylike(HttpSession session,	HttpServletResponse response, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 		
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -123,13 +124,43 @@ public class MypageController {
 		String userId = (String) session.getAttribute("user_id");
 
 		if (userId != null) {
-			List<LikeDTO> like = service.getLike(userId);
-
+			
+			int limitindex = (page - 1) * 9;
+			int limitcount = 9;
+			int totalLike = 0;
+			
+			HashMap<String, Object> llistmap = new HashMap<String, Object>();
+			llistmap.put("user_id", userId);
+			llistmap.put("limitindex", limitindex);
+			llistmap.put("limitcount", limitcount);
+			
+			List<LikeDTO> like = service.getLike(llistmap);
+			totalLike = service.getLikeCount(userId);
+			
 			List<String> mngNoList = new ArrayList<>();
 			for (LikeDTO likeItem : like) {
 				mngNoList.add(String.valueOf(likeItem.getMng_no()));
 			}
-
+			
+			int totalPage = 0;
+			if (totalLike % 9 == 0) {
+				totalPage = totalLike / 9;
+			} else {
+				totalPage = (totalLike / 9) + 1;
+			}
+			int startpage = page / 9 * 9 + 1;
+			if (page % 9 == 0) {
+				startpage -= 9;
+			}
+			int endpage = startpage + 9 - 1;
+			if (endpage > totalPage) {
+				endpage = totalPage;
+			}
+			
+			mv.addObject("currentpPage", page);
+			mv.addObject("totalPage", totalPage);
+			mv.addObject("startpage", startpage);
+			mv.addObject("endpage", endpage);
 			mv.addObject("like", like);
 			mv.addObject("user", userId);
 			mv.addObject("mngNoList", mngNoList);
@@ -144,7 +175,7 @@ public class MypageController {
 
 	// 작성 댓글
 	@GetMapping("/mycomment")
-	public ModelAndView mycomment(HttpSession session,	HttpServletResponse response) {
+	public ModelAndView mycomment(HttpSession session,	HttpServletResponse response, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -155,8 +186,38 @@ public class MypageController {
 		String userId = (String) session.getAttribute("user_id");
 
 		if (userId != null) {
-			List<CommentDTO> comment = service.getComment(userId);
-
+			
+			int limitindex = (page - 1) * 10;
+			int limitcount = 10;
+			int totalComment = 0;
+			
+			HashMap<String, Object> cmtlistmap = new HashMap<String, Object>();
+			cmtlistmap.put("user_id", userId);
+			cmtlistmap.put("limitindex", limitindex);
+			cmtlistmap.put("limitcount", limitcount);
+			
+			List<CommentDTO> comment = service.getComment(cmtlistmap);
+			totalComment = service.getCommentCount(userId);
+			
+			int totalPage = 0;
+			if (totalComment % 10 == 0) {
+				totalPage = totalComment / 10;
+			} else {
+				totalPage = (totalComment / 10) + 1;
+			}
+			int startpage = page / 10 * 10 + 1;
+			if (page % 10 == 0) {
+				startpage -= 10;
+			}
+			int endpage = startpage + 10 - 1;
+			if (endpage > totalPage) {
+				endpage = totalPage;
+			}
+			
+			mv.addObject("currentpPage", page);
+			mv.addObject("totalPage", totalPage);
+			mv.addObject("startpage", startpage);
+			mv.addObject("endpage", endpage);
 			mv.addObject("user", userId);
 			mv.addObject("comment", comment);
 			mv.setViewName("mypage/mycomment");

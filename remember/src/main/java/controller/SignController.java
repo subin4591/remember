@@ -28,8 +28,8 @@ public class SignController{
 	SignService Ss;
 	//로그인구현	
 	@RequestMapping("/Login")
-	public String loginprocess(String user_id, String password, HttpSession session) {
-		UserDTO my_info = Ss.MyInfo(user_id);
+	public String loginprocess(String id, String password, HttpSession session) {
+		UserDTO my_info = Ss.MyInfo(id);
 		Map<String, Object> map = new HashMap<>();
 		if(my_info != null && my_info.getPassword().equals(password)) {
 				session.setAttribute("user_id",my_info.getUser_id());
