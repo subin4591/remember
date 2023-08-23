@@ -35,7 +35,7 @@
 	<div class="headerProfile">
 		<c:choose>
 			<c:when test="${empty user_id}">
-				<a href="#"><img alt="로그인" src="/image/login.png"></a>
+				<a href="/Signin"><img alt="로그인" src="/image/login.png"></a>
 			</c:when>
 			<c:when test="${not empty user_id}">
 				<a href="/myinfo"><img alt="마이페이지" src="/image/user.png"></a>

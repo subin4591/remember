@@ -42,7 +42,7 @@
 			<img alt="기억하길" src="/image/mainLogo.png">
 		</a>
 		<a href="https://www.mpva.go.kr/">
-			<img alt="국가보훈부" src="/image/Independent.png">
+			<img alt="국가보훈부" src="/image/independent.png">
 		</a>
 	</div>
 	
