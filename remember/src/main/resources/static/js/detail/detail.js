@@ -59,9 +59,9 @@ $(document).ready(function () {
     var metaDescription = document.createElement("meta");
     var metaImg = document.createElement("meta");
 
-    metaTitle.name = "og:title";
-    metaDescription.name = "og:description";
-    metaImg.name = "og:image";
+    metaTitle.property = "og:title";
+    metaDescription.property = "og:description";
+    metaImg.property = "og:image";
 
     metaTitle.content = `${items.NAME_KO}(${items.NAME_CH})`;
     metaDescription.content = `${items.ACHIVEMENT_KO}`;
