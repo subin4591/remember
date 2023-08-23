@@ -21,11 +21,11 @@ $(document).ready(function () {
   request1.send();
   request1.onload = function () {
     let items = JSON.parse(this.response).ITEMS[0];
-    
-	if (items == undefined) {
-		return window.history.back();
-	}
-	
+
+    if (items == undefined) {
+      return window.history.back();
+    }
+
     mng_no.innerText = items.MNG_NO;
     name_ko.innerText = items.NAME_KO;
     name_ch.innerText = `(${items.NAME_CH})`;
@@ -47,19 +47,18 @@ $(document).ready(function () {
 
     let article = document.querySelectorAll("article")[0];
     article.innerHTML = `${items.ACHIVEMENT_KO.replace(/([一-龥]+)/g, "<span class='hanja'>$1</span>")}`;
-    
-    
+
     let errorLink = document.getElementsByClassName("errorWrap")[0];
-    let aLink = 'https://e-gonghun.mpva.go.kr/user/ContribuReportDetail.do?goTocode=20001&pageTitle=Report&mngNo='
-    
-    errorLink.innerHTML = `<a href="${aLink}${items.MNG_NO}">${aLink}${items.MNG_NO}</a>`
-    
+    let aLink = "https://e-gonghun.mpva.go.kr/user/ContribuReportDetail.do?goTocode=20001&pageTitle=Report&mngNo=";
+
+    errorLink.innerHTML = `<a href="${aLink}${items.MNG_NO}">${aLink}${items.MNG_NO}</a>`;
+
     let profileImg = document.getElementById("profileImg").src;
-    
-    $('head').append(`<meta property="og:title" content="${items.NAME_KO}(${items.NAME_CH})">`)
-    $('head').append(`<meta property="og:description" content="${items.ACHIVEMENT_KO}">`)
-    $('head').append(`<meta property="og:image" content="${profileImg}">`)
-    $('head').append(`<meta property="og:url" content="http://49.50.175.53/detail?mng_no=${items.MNG_NO}">`)
+
+	$("#meta_og_title").attr("content", `${items.NAME_KO}(${items.NAME_CH})`);
+    $("#meta_og_description").attr("content", items.ACHIVEMENT_KO);
+    $("#meta_og_image").attr("content", profileImg);
+    $("#meta_og_url").attr("content", `http://49.50.175.53/detail?mng_no=${items.MNG_NO}`);
 
   };
 
