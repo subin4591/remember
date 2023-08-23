@@ -31,7 +31,7 @@
 								<p>\${ this.work }</p>
 							</div>
 			    			<div class="profileWrapper">
-			    				<img src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=\${ this.mngNo }&type=CH" data-target="\${ this.sex }">
+			    				<img class="yesProfile" src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=\${ this.mngNo }&type=CH" data-target="\${ this.sex }">
 			    			</div>
 			    			<h2>\${ this.name }</h2>
 		    			</li>
