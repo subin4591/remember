@@ -28,7 +28,7 @@ public class DetailController {
 		}
 
 		model.addAttribute("likeCount", likeCount);
-		session.setAttribute("user_id", "42d13620-3c0a-11ee-a984-54cd08bea1ea");
+		
 		return "detail";
 	}
 
