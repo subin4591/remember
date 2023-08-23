@@ -2,9 +2,13 @@ package controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dto.UserDTO;
+import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpSession;
 import service.SignService;
 @Controller
@@ -70,8 +75,9 @@ public class SignController{
 	//회원가입시 중복체크
 	@PostMapping("/dupliIDCheck")
 	@ResponseBody
-	public int duplieIDcheck(@RequestParam("User_id") String User_id) {
-			int cnt=Ss.dupliIDcheck(User_id);
+	public int duplieIDcheck(@RequestParam("user_id") String user_id) {
+			int cnt=Ss.dupliIDcheck(user_id);
+			System.out.println(user_id);
 			return cnt;
 	}
 	
@@ -98,7 +104,7 @@ public class SignController{
 			
 			return"/Findpasswordend";
 		}
-		/*
+		
 		
 	//이메일 구현단
 		@Autowired
@@ -107,7 +113,7 @@ public class SignController{
 		@PostMapping("/CheckMail") 
 		@ResponseBody  
 		//회원가입시 이메일 인증번호 발송
-		public String SendMail(String email) {
+		public String SendMail(@RequestParam("email")String email) {
 			Random random=new Random(); 
 			String key=""; 
 			for(int i =0; i<3;i++) {
@@ -159,6 +165,6 @@ public class SignController{
 	        return key;	
 	        }
 		
-	*/
+	
 }
 	

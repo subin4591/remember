@@ -8,12 +8,12 @@
 <script src="/js/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-
+<form method="post" class="member-join" action="/signup">
  <h1 class="h1">회원가입</h1>
         <input
             type="text"
             id="id"
-            name="member_id"
+            name="user_id"
             alt="ID입력"
             placeholder="ID(영문,숫자 4~12자)"
             oninput="checkeID()"
@@ -26,14 +26,6 @@
             name="name"
             alt="이름입력"
             placeholder="성함(ex:홍길동 혹은 josh)"
-            required
-          />
-          <input
-            type="text"
-            id="phone"
-            name="phone"
-            alt="연락처 입력"
-            placeholder="연락처"
             required
           />
         <input
@@ -111,9 +103,7 @@
             onclick="return check()"
             disabled
           />
-          
-          
-          
+ </form>
 </body>
 <script src="/js/sendmail.js"></script>
 <script src="/js/duplicatecheck.js"></script>
