@@ -6,10 +6,6 @@
     align-items: center;
     height: 40vh; /* viewport height */
 }
-body{
-	width:1240px;
-	background: #D7D1C7;
-}
 
 .logo {
 	flex:1.5;
@@ -29,7 +25,8 @@ form {
     margin: auto;
 }
 input {
-	
+	font: var(--bady16);
+    background-color: white;
 	border-radius: 30px;
 	text-align: center;
 	vertical-align: middle;
