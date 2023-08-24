@@ -24,6 +24,6 @@ function ckeckLogin() {
   );
 
   if (ok) {
-    location.href = "/signin";
+    location.href = "/Signin";
   }
 }

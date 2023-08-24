@@ -7,7 +7,7 @@
 	<meta name="og:site_name" content="기억하길" />
 	<meta id="meta_og_title" property="og:title" content="기억하길" />
     <meta id="meta_og_description" property="og:description" content="대한민국의 청년들이 독립운동가들의 심장 소리를 듣고 정치, 경제, 사회, 문화 전 영역에서 위대한 대한민국을 만들어나가길 꿈꾸며 독립운동가들의 역사를 전 세계에 알리고자 합니다." />
-    <meta id="meta_og_image" property="og:image" content="/image/icon.png" />
+    <meta id="meta_og_image" property="og:image" content="/image/og-image.png" />
     <meta id="meta_og_url" property="og:url" content="http://49.50.175.53/detail" />
 	<link rel="icon" href="/image/icon.png" />
 	<link rel="apple-touch-icon" href="/image/icon.png" />
