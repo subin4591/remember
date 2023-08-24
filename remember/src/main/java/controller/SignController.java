@@ -39,7 +39,7 @@ public class SignController {
 			return "redirect:/";
 		} else {
 			session.setAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
-			session.setAttribute("url", "/Login");
+			session.setAttribute("url", "/Signin");
 			return "redirect:/alert";
 		}
 

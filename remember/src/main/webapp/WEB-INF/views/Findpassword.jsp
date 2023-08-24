@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/Signin.css" />
+<link rel="stylesheet" href="/css/Findpassword.css" />
 <link href="/image/icon.png" rel="icon">
 <link href="/css/style.css" rel=stylesheet>
 <title>기억하길</title>
