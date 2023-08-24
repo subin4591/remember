@@ -200,9 +200,12 @@ input:disabled {
 }
 
 .mainLi a {
-	padding : 2px;
+	padding : 0 10px;
 	border: 1.5px solid var(--main);
 	border-radius: 5px;
+	margin: 5px;
+	background-color: var(--main);
+	color : white;
 }
 
 /*작성 댓글*/
