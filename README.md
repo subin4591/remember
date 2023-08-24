@@ -1,32 +1,32 @@
 # 🎗 Remember
 
-<br>
-
 ## 목차
 
 - [🗒 프로젝트 소개](#-프로젝트-소개)
 - [👥 팀원 소개](#-팀원-소개)
 - [🔌 기술 스택](#-기술-스택)
+- [📖 페이지별 기능](#-페이지별-기능)
 - [💻 프로젝트 실행 방법](#-프로젝트-실행-방법)
 
-<br />
+<br /><br />
 
 ## 🗒 프로젝트 소개
-
 <div align="center"> 
 <img src="./remember/src/main/resources/static/image/icon.png" width=20% height=20%>
-<br><br>
+
+<br /><br />
+  
 대한민국의 청년들이 독립운동가들의 심장 소리를 듣고 정치, 경제, 사회, 문화 전 영역에서<br/>
 위대한 대한민국을 만들어나가길 꿈꾸며 독립운동가들의 역사를 전 세계에 알리고자 프로젝트를 구현하였습니다.<br/>
 
 <br>
 
-[배포 서버](http://49.50.175.53/)<br/>
-[REPOSITORIE](https://github.com/eunfire/remember)<br/><br/>
+[배포 서버](http://49.50.175.53/)    
+[REPOSITORIE](https://github.com/eunfire/remember)
 
 </div>
-<br>
-<br>
+
+<br /><br />
 
 ## 👥 팀원 소개
 
@@ -56,8 +56,8 @@
     <td align="center"><b>메인페이지<br/>리스트페이지<br/>독립선언서페이지</b></td>
   </tr>
 </table>
-<br>
-<br>
+
+<br /><br />
 
 ## 🔌 기술 스택
 
@@ -71,8 +71,30 @@
 
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white) ![STS4](https://img.shields.io/badge/STS4-%236DB33F.svg?style=flat-square&logo=spring&logoColor=white)
 
-<br>
-<br>
+<br /><br />
+
+## 📖 페이지별 기능
+| 메인페이지 | 2.8 독립선언서 | 3.1 독립선언서 |
+| :-----: | :---------: | :---------: |
+| ![메인페이지](remember/src/main/picture/기억하길-메인.png)|![2.8 독립선언서](remember/src/main/picture/기억하길-2.8독립선언서.png)|![3.1 독립선언서](remember/src/main/picture/기억하길-3.1독립선언서.png) |    
+
+| 로그인 | 회원가입 | 비밀번호찾기 |
+| :--: |:-----: |:--------: |
+| ![로그인](remember/src/main/picture/기억하길-로그인.png)|![회원가입](remember/src/main/picture/기억하길-회원가입.png)|![비밀번호찾기](remember/src/main/picture/기억하길-비밀번호찾기.png) |    
+
+| 모든독립유공자목록 | 이달의독립운동가목록 | 검색목록 |
+| :-----------: | :------------: | :----: |
+| ![모든독립유공자목록](remember/src/main/picture/기억하길-모든독립유공자목록.png)|![이달의독립운동가목록](remember/src/main/picture/기억하길-이달의독립운동가목록.png)|![검색목록](remember/src/main/picture/기억하길-검색목록.png) |    
+
+| 공적개요 상세 | 이달의독립운동가 상세 |
+| :--------: | :-------------: |
+| ![공적개요 상세](remember/src/main/picture/기억하길-공적개요%20상세.png) | ![이달의독립운동가 상세](remember/src/main/picture/기억하길-이달의독립운동가%20상세.png) |    
+
+| 마이페이지 | 마이페이지 작성댓글 | 마이페이지 존경해요 |
+| :-----: | :------------: | :------------: |
+| ![마이페이지](remember/src/main/picture/기억하길-마이페이지.png) | ![마이페이지 작성댓글](remember/src/main/picture/기억하길-작성댓글.png) | ![마이페이지 존경해요](remember/src/main/picture/기억하길-존경해요.png) |    
+
+<br /><br />
 
 ## 💻 프로젝트 실행 방법
 
@@ -105,7 +127,7 @@
   </tr>
 </table>
 
-<br>
+<br />
 
 #### 1. 레포지토리를 `clone` 합니다
 
