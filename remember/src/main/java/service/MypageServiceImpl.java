@@ -31,6 +31,10 @@ public class MypageServiceImpl implements MypageService {
 	public int deleteLike(String user_id) {
 		return mypagedao.deleteLike(user_id);
 	}
+	
+	public int deleteLikeno(HashMap<String, Object> paramMap) {
+		return mypagedao.deleteLikeno(paramMap);
+	}
 
 	public int deleteComment(String user_id) {
 		return mypagedao.deleteComment(user_id);

@@ -34,6 +34,7 @@
 			    				<img class="yesProfile" src="https://e-gonghun.mpva.go.kr/hise/ua/getImage.do?mngNo=\${ this.mngNo }&type=CH" data-target="\${ this.sex }">
 			    			</div>
 			    			<h2>\${ this.name }</h2>
+		    				<a href="#" onclick="deletelike('\${this.mngNo}')">삭제</a>
 		    			</li>
 					`;	// return end
 				};	// printMonthLi end
@@ -87,7 +88,22 @@
 			// 함수 실행
 			getLikeList(${ mngNoList });
 		});	// document end
-	</script>
+</script>
+<script>
+function deletelike(mng_no) {
+	$.ajax({
+		type: "POST",
+		url: "/deletelike",
+		data: { mng_no: mng_no },
+		success: function() {
+			location.reload(); // 현재 페이지 리로드
+		},
+		error: function() {
+			alert("존경해요 삭제 도중 오류가 발생했습니다.");
+		}
+	});
+}
+</script>
 <title>존경해요</title>
 </head>
 <body>

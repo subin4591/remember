@@ -33,6 +33,10 @@
 		SELECT COUNT(*) FROM `like` WHERE user_id = #{user_id};
 	</select>
 	
+	<delete id="deleteLikeno" parameterType="hashmap">
+		DELETE FROM `like` WHERE user_id = #{user_id} AND mng_no = #{mng_no};
+	</delete>
+	
 	<select id="getComment" parameterType="hashmap" resultType="commentDto">
 		SELECT * FROM comment WHERE user_id = #{user_id}
 		ORDER BY created_at DESC

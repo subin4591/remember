@@ -199,6 +199,12 @@ input:disabled {
 	height: 100%;
 }
 
+.mainLi a {
+	padding : 2px;
+	border: 1.5px solid var(--main);
+	border-radius: 5px;
+}
+
 /*작성 댓글*/
 .mycomment {
     width: 100%;

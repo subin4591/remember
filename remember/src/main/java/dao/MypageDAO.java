@@ -20,6 +20,8 @@ public interface MypageDAO {
 	public int deleteUser(String user_id);
 
 	public int deleteLike(String user_id);
+	
+	public int deleteLikeno(HashMap<String, Object> paramMap);
 
 	public int deleteComment(String user_id);
 	

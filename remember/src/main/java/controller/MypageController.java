@@ -172,6 +172,29 @@ public class MypageController {
 
 		return mv;
 	}
+	
+	// 존경해요 삭제
+	@RequestMapping("/deletelike")
+	public String myDeletelike(HttpSession session,
+			HttpServletResponse response, @RequestParam("mng_no") int mng_no) {
+
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setDateHeader("Expires", 0); // Proxies.
+		
+		String userId = (String) session.getAttribute("user_id");
+
+		if (userId != null) {
+			HashMap<String, Object> paramMap = new HashMap<>();
+	        paramMap.put("user_id", userId);
+	        paramMap.put("mng_no", mng_no);
+	        
+	        System.out.println("Deleting like for userId: " + userId + " and mngNo: " + mng_no);
+	        service.deleteLikeno(paramMap);
+		}
+
+		return "redirect:/mylike";
+	}
 
 	// 작성 댓글
 	@GetMapping("/mycomment")
