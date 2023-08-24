@@ -2,6 +2,15 @@
 
 <br>
 
+## 목차
+
+- [🗒 프로젝트 소개](#-프로젝트-소개)
+- [👥 팀원 소개](#-팀원-소개)
+- [🔌 기술 스택](#-기술-스택)
+- [💻 프로젝트 실행 방법](#-프로젝트-실행-방법)
+
+<br />
+
 ## 🗒 프로젝트 소개
 
 <div align="center"> 
@@ -23,28 +32,34 @@
 
 <table>
   <tr>
-    <td><b><a href="https://github.com/eunfire">김은세</a></b></td>
-    <td><b><a href="https://github.com/KKangdaa">강다현</a></b></td>
-    <td><b><a href="https://github.com/y-100">윤백</a></b></td>
-    <td><b><a href="https://github.com/subin4591">황수빈</a></b></td>
+    <td align="center"><b><a href="https://github.com/eunfire">김은세</a></b></td>
+    <td align="center"><b><a href="https://github.com/KKangdaa">강다현</a></b></td>
+    <td align="center"><b><a href="https://github.com/y-100">윤백</a></b></td>
+    <td align="center"><b><a href="https://github.com/subin4591">황수빈</a></b></td>
   </tr>
   <tr>
-    <td><b>팀장</b></td>
-    <td><b>팀원</b></td>
-    <td><b>팀원</b></td>
-    <td><b>팀원</b></td>
+    <td><img src="https://avatars.githubusercontent.com/eunfire" width="120px" /></td>
+    <td><img src="https://avatars.githubusercontent.com/KKangdaa" width="120px" /></td>
+    <td><img src="https://avatars.githubusercontent.com/y-100" width="120px" /></td>
+    <td><img src="https://avatars.githubusercontent.com/subin4591" width="120px" /></td>
   </tr>
   <tr>
-    <td><b>마이페이지</b></td>
-    <td><b>상세페이지<br/>배포</b></td>
-    <td><b>회원가입<br/>로그인</b></td>
-    <td><b>메인페이지<br/>리스트페이지<br/>독립선언서페이지</b></td>
+    <td align="center"><b>팀장</b></td>
+    <td align="center"><b>팀원</b></td>
+    <td align="center"><b>팀원</b></td>
+    <td align="center"><b>팀원</b></td>
+  </tr>
+  <tr>
+    <td align="center"><b>마이페이지</b></td>
+    <td align="center"><b>상세페이지<br/>배포</b></td>
+    <td align="center"><b>회원가입<br/>로그인</b></td>
+    <td align="center"><b>메인페이지<br/>리스트페이지<br/>독립선언서페이지</b></td>
   </tr>
 </table>
 <br>
 <br>
 
-## 🔌 기술스택
+## 🔌 기술 스택
 
 ![Java](https://img.shields.io/badge/Java%2017-%23ED8B00.svg?style=flat-square&logo=openjdk&logoColor=white) ![MySQL](https://img.shields.io/badge/Mysql%208.0-%2300000f.svg?style=flat-square&logo=mysql&logoColor=white) ![Spring](https://img.shields.io/badge/Spring%20Boot-%236DB33F.svg?style=flat-square&logo=spring&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat-square&logo=CSS3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=Javascript&logoColor=white) ![jQuery](https://img.shields.io/badge/JQuery-%230769AD.svg?style=flat-square&logo=JQuery&logoColor=white)
 
@@ -59,7 +74,7 @@
 <br>
 <br>
 
-## 💻 실행 방법
+## 💻 프로젝트 실행 방법
 
 ### 환경 변수
 
