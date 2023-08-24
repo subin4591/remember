@@ -1,18 +1,17 @@
 @charset "UTF-8";
+main {
+	padding: 80px 0;
+}
+
 .logo_container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 15vh; /* viewport height */
 }
-body{
-	width:1240px;
-	background: #D7D1C7;
-}
-
 
 form {
-	    width: 800px;
+	width: 800px;
     height: 650px;
     display: flex;
     flex-direction: column;
@@ -22,6 +21,8 @@ form {
     
 }
 input {
+	font: var(--bady16);
+    background-color: white;
 	border : 1px solid #E3E2E0;
 	border-radius: 30px;
 	text-align: center;
@@ -80,9 +81,13 @@ margin-top:-7px;
 #join{
 	margin-top:-10px;
 	border : 1px solid #182434;
+	background-color: #DCD9D8;
 }
 #join.on{
     background-color: #182434;
     color: white;
     cursor: pointer;
+}
+.h1 {
+	margin: 0.67em;
 }
