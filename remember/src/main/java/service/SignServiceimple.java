@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import dao.SignDAO;
 import dto.UserDTO;
 
@@ -25,11 +26,11 @@ public class SignServiceimple implements SignService{
 	public int dupliEmailcheck(String email) {
 		return dao.dupliEmailcheck(email);
 	}
-	@Override
-	public int dupliFindEmailcheck(String user_id,String email) {
-		return dao.dupliFindEmailcheck(user_id,email);
-	}
 	
+	@Override
+	public int dupliFindEmailcheck(UserDTO user) {
+		return dao.dupliFindEmailcheck(user);
+	}
 	@Override
 	public UserDTO MyInfo(String id) {
 		return dao.MyInfo(id);
@@ -38,7 +39,10 @@ public class SignServiceimple implements SignService{
 	public int updatemember(UserDTO UserDTO) {
 		return dao.updatemember(UserDTO);
 	}
-
+	@Override
+	public int Findpwupdate(UserDTO UserDTO) {
+		return dao.Findpwupdate(UserDTO);
+	}
 	
 
 	@Override
@@ -71,11 +75,7 @@ public class SignServiceimple implements SignService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	@Override
-	public void Findpwupdate(UserDTO userDTO) {
-		// TODO Auto-generated method stub
-		
-	}
+
 		
 
 }

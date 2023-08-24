@@ -83,7 +83,7 @@ public class SignController {
 	@ResponseBody
 	public int duplieIDcheck(@RequestParam("user_id") String user_id) {
 		int cnt = Ss.dupliIDcheck(user_id);
-		System.out.println(user_id);
+
 		return cnt;
 	}
 
@@ -97,11 +97,18 @@ public class SignController {
 	// 비밀번호찾기시 id와 이메일 대조
 	@PostMapping("/dupliFindEmailCheck")
 	@ResponseBody
-	public int duplieFindEmailcheck(@RequestParam("user_id") String user_id, @RequestParam("email") String email) {
-		int cnt = Ss.dupliFindEmailcheck(user_id, email);
+	public int duplieFindEmailcheck(UserDTO UserDTO) {
+
+		int cnt = Ss.dupliFindEmailcheck(UserDTO);
 		return cnt;
 	}
-
+	//비밀번호 찾기 
+	@RequestMapping("/Findpassword")
+	public ModelAndView Findpassword() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Findpassword");	
+		return mv;
+	}
 	// 비밀번호찾기시 임시비밀번호 변경
 	@PostMapping("/Findpwupdate")
 	public String Findpwupdate(UserDTO UserDTO) {

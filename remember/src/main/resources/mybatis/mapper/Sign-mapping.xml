@@ -12,8 +12,8 @@
 	<select id="dupliEmailcheck" parameterType="String" resultType="int">
 		SELECT COUNT(email) FROM user where email= #{email}
 	</select>
-	<select id="dupliFindEmailcheck" parameterType="String" resultType="int">
-		SELECT COUNT(user_id= #{user_id}) FROM user where email= #{email}
+	<select id="dupliFindEmailcheck" parameterType="UserDTO" resultType="int">
+		SELECT COUNT(id) FROM user where email= #{email} and id= #{id}
 	</select>
   	<select parameterType="String" resultType="UserDTO" id="MyInfo">
   		select * from user where id = #{id}
@@ -23,7 +23,7 @@
   	</update>
   	
   	<update parameterType="UserDTO" id="Findpwupdate">
-  		update user set  password=#{password} where user_id =#{user_id}
+  		update user set  password=#{password} where id =#{id}
   	</update>
 
 	

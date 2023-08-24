@@ -7,14 +7,14 @@ function Findpasswordopen() {
 
  function checkFindEmail(){
 	 	
-	 	var member_id= $('#id').val();
+	 	var id= $('#id').val();
         var email = $('#email').val(); 
         var sendEmail = document.forms["sendEmail"];
         $.ajax({
             url:'/dupliFindEmailCheck', 
             type:'post', 
             data:{
-				member_id:member_id,
+				id:id,
 				email:email
 				},
             success:function(cnt){ 
